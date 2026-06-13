@@ -22,7 +22,7 @@
             --text-main: #2C3E50;
             --text-muted: #7F8C8D;
             --border-color: #E2E8F0;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -32,13 +32,14 @@
             padding: 0;
             font-family: 'Outfit', 'Noto Sans KR', sans-serif;
             -webkit-tap-highlight-color: transparent;
+            letter-spacing: -0.3px;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
         /* Container */
@@ -54,10 +55,10 @@
         header {
             background: linear-gradient(135deg, #FF4B72 0%, #FF85A2 100%);
             color: white;
-            padding: 30px 24px 40px 24px;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 10px 20px rgba(255, 75, 114, 0.15);
+            padding: 35px 24px 45px 24px;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            box-shadow: 0 10px 20px rgba(255, 75, 114, 0.12);
             position: relative;
             overflow: hidden;
         }
@@ -74,33 +75,34 @@
         }
 
         .header-meta {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.22);
             padding: 4px 12px;
             border-radius: 20px;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             backdrop-filter: blur(5px);
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 25px;
             font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            letter-spacing: -0.8px;
+            line-height: 1.2;
         }
 
         .header-info {
-            font-size: 14px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 13.5px;
+            opacity: 0.95;
+            font-weight: 400;
         }
 
         .header-info p {
-            margin-top: 4px;
+            margin-top: 5px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -110,13 +112,14 @@
         .info-box {
             background-color: var(--card-bg);
             margin: -25px 24px 20px 24px;
-            padding: 16px 20px;
-            border-radius: 20px;
+            padding: 16px 15px;
+            border-radius: 22px;
             box-shadow: var(--shadow);
             display: flex;
             justify-content: space-between;
             position: relative;
             z-index: 10;
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .info-item {
@@ -133,25 +136,28 @@
         }
 
         .info-label {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
             margin-bottom: 4px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .info-value {
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 700;
             color: var(--text-main);
+            line-height: 1.2;
         }
 
         .info-link {
             color: inherit;
             text-decoration: none;
+            border-bottom: 1px solid var(--text-muted);
         }
 
         .info-link:hover {
             color: var(--primary);
+            border-bottom-color: var(--primary);
         }
 
         /* Day Selector Tab */
@@ -159,28 +165,30 @@
             display: flex;
             padding: 0 24px;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .day-tab {
             flex: 1;
             padding: 12px 0;
             border: none;
-            border-radius: 15px;
+            border-radius: 16px;
             background-color: var(--card-bg);
             color: var(--text-muted);
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13.5px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
             transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.5);
         }
 
         .day-tab.active {
             background-color: var(--primary);
             color: white;
-            box-shadow: 0 6px 15px rgba(255, 75, 114, 0.25);
+            box-shadow: 0 6px 15px rgba(255, 75, 114, 0.22);
             transform: translateY(-2px);
+            border-color: var(--primary);
         }
 
         /* Timeline Container */
@@ -192,29 +200,31 @@
 
         .timeline.active {
             display: block;
-            animation: fadeIn 0.4s ease-out;
+            animation: fadeIn 0.35s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Card styles */
         .timeline-card {
             background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 22px;
+            padding: 22px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
-            border-left: 5px solid var(--primary);
+            border-left: 6px solid var(--primary);
             position: relative;
             transition: var(--transition);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            border-left-width: 6px;
         }
 
         .timeline-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
         }
 
         .timeline-card.tour {
@@ -226,29 +236,43 @@
         }
 
         .card-time {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-muted);
-            display: flex;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            background-color: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .timeline-card.tour .card-time {
+            color: var(--secondary);
+            background-color: var(--secondary-light);
+        }
+
+        .timeline-card.cafe .card-time {
+            color: var(--accent);
+            background-color: var(--accent-light);
         }
 
         .card-title {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 17px;
+            font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
+            line-height: 1.3;
         }
 
         .card-title a {
             color: inherit;
             text-decoration: none;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 4px;
         }
@@ -263,42 +287,55 @@
         }
 
         .card-desc {
-            font-size: 13.5px;
-            color: #576574;
-            margin-bottom: 12px;
+            font-size: 13px;
+            color: #5A6A85;
+            margin-bottom: 14px;
+            line-height: 1.5;
         }
 
-        /* Detail List */
+        /* Detail List - 시인성 강화 정렬 기법 적용 */
         .detail-list {
             list-style: none;
-            margin-bottom: 12px;
-            background: #f8fafc;
-            padding: 10px 14px;
-            border-radius: 12px;
+            margin-bottom: 14px;
+            background: #F8FAFC;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(226, 232, 240, 0.5);
         }
 
         .detail-list li {
             font-size: 12.5px;
-            color: #4f5f6f;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
+            color: #4A5568;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 14px; /* 불릿 포인트 영역 확보 */
+            line-height: 1.5;
         }
 
         .detail-list li:last-child {
             margin-bottom: 0;
         }
 
+        /* 두 번째 줄도 완벽 정렬되도록 position absolute 불릿 적용 */
         .detail-list li::before {
             content: "•";
             color: var(--primary);
-            font-weight: bold;
-            flex-shrink: 0;
+            font-weight: 800;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .timeline-card.tour .detail-list li::before {
+            color: var(--secondary);
+        }
+        
+        .timeline-card.cafe .detail-list li::before {
+            color: var(--accent);
         }
 
         .detail-list a {
-            color: #2c3e50;
+            color: #1A202C;
             text-decoration: none;
             font-weight: 700;
             border-bottom: 1.5px dashed var(--primary);
@@ -310,10 +347,6 @@
             color: var(--primary);
             background-color: var(--primary-light);
             border-bottom-style: solid;
-        }
-        
-        .timeline-card.tour .detail-list li::before {
-            color: var(--secondary);
         }
         
         .timeline-card.tour .detail-list a {
@@ -348,8 +381,8 @@
             padding: 8px 14px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11.5px;
+            font-weight: 700;
             transition: var(--transition);
             border: 1px solid #C8E6C9;
         }
@@ -360,11 +393,12 @@
         }
 
         .badge {
-            font-size: 10px;
+            font-size: 9.5px;
             padding: 3px 8px;
             border-radius: 8px;
             font-weight: 700;
             text-transform: uppercase;
+            flex-shrink: 0;
         }
 
         .badge-primary {
@@ -386,26 +420,27 @@
         .tip-box {
             background-color: #FFF9E6;
             border: 1px solid #FFE499;
-            padding: 10px 14px;
-            border-radius: 12px;
-            margin-top: 10px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            margin-top: 12px;
             font-size: 12px;
             color: #B27B00;
             display: flex;
             align-items: flex-start;
             gap: 6px;
+            line-height: 1.5;
         }
 
-        /* Food List Section */
+        /* Food Section Grid */
         .food-section {
             padding: 0 24px;
             margin-top: 10px;
         }
 
         .section-title {
-            font-size: 18px;
+            font-size: 17.5px;
             font-weight: 800;
-            margin: 15px 0 10px 0;
+            margin: 20px 0 12px 0;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -415,13 +450,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .food-card {
             background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 12px;
+            border-radius: 18px;
+            padding: 14px;
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
@@ -432,20 +467,23 @@
         .food-card:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
         }
 
         .food-tag {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
+            text-transform: uppercase;
         }
 
         .food-name {
-            font-size: 13.5px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         .food-link {
@@ -453,10 +491,10 @@
             color: var(--secondary);
             text-decoration: none;
             margin-top: auto;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .food-link:hover {
@@ -466,25 +504,27 @@
         /* Convenience Store Section */
         .cvs-section {
             padding: 0 24px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .cvs-card {
             background-color: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 22px;
             padding: 20px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .cvs-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            border-bottom: 1.5px solid var(--border-color);
+            padding-bottom: 8px;
         }
 
         .cvs-list {
@@ -492,10 +532,10 @@
         }
 
         .cvs-list li {
-            font-size: 13px;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed var(--border-color);
+            font-size: 12.5px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #EDF2F7;
         }
 
         .cvs-list li:last-child {
@@ -505,14 +545,16 @@
         }
 
         .cvs-item-name {
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-main);
+            display: block;
+            margin-bottom: 3px;
         }
 
         .cvs-item-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 2px;
+            font-size: 11.5px;
+            color: #718096;
+            line-height: 1.45;
         }
 
         /* Quick Tips */
@@ -522,14 +564,14 @@
 
         .tip-card {
             background-color: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 22px;
             padding: 20px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
         }
 
         .tip-item {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .tip-item:last-child {
@@ -537,8 +579,8 @@
         }
 
         .tip-title {
-            font-size: 13px;
-            font-weight: 700;
+            font-size: 12.5px;
+            font-weight: 800;
             color: var(--text-main);
             margin-bottom: 4px;
             display: flex;
@@ -547,9 +589,10 @@
         }
 
         .tip-desc {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
             padding-left: 20px;
+            line-height: 1.45;
         }
 
         /* Bottom Floating Bar for Mobile Quick Share */
@@ -560,7 +603,7 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 480px;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.96);
             border-top: 1px solid var(--border-color);
             padding: 12px 24px;
             display: flex;
@@ -577,7 +620,7 @@
             border: none;
             padding: 8px 16px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 700;
             cursor: pointer;
             display: flex;
@@ -591,9 +634,17 @@
         }
         
         .share-text {
-            font-size: 12px;
+            font-size: 11.5px;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
+        }
+        
+        /* Map Icon Style */
+        .map-icon {
+            display: inline-block;
+            font-size: 11px;
+            vertical-align: middle;
+            margin-left: 2px;
         }
     </style>
 </head>
@@ -619,7 +670,7 @@
         </div>
         <div class="info-item">
             <div class="info-label">2일차 투어</div>
-            <div class="info-value"><a href="https://experiences.myrealtrip.com/products/3153601" target="_blank" style="color: var(--secondary); text-decoration: underline;">버스투어 링크</a></div>
+            <div class="info-value"><a href="https://experiences.myrealtrip.com/products/3153601" target="_blank" style="color: var(--secondary); text-decoration: underline; border-bottom: 1px dashed var(--secondary);">교토 버스 투어</a></div>
         </div>
         <div class="info-item">
             <div class="info-label">승하차지</div>
@@ -673,14 +724,16 @@
                 <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" target="_blank">덴포잔 베이 에어리어 관광 🗺️</a>
                 <span class="badge badge-primary">관광 & 식사</span>
             </div>
-            <div class="card-desc">오사카 1일 패스를 개시하여 덴포잔 관광지 3곳을 도는 알찬 동선입니다.</div>
+            <div class="card-desc">하버빌리지/마켓플레이스 내 구글평점 4.0 이상 찐 맛집에서 점심 식사를 진행합니다. (간코스시는 평점 3.4로 제외)</div>
             <ul class="detail-list">
-                <li>[식사] 덴포잔 마켓플레이스 내 오사카 패스 제휴 음식점(예: 자유켄 카레 등) 점심 식사</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Hokkyokusei+Tempozan+Osaka" target="_blank">북극성 오므라이스 덴포잔점 (구글 4.0)</a>: 1922년 창업 오사카 오므라이스 원조. 촉촉하고 부드러운 맛</li>
+                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka" target="_blank">아이즈야 덴포잔점 (구글 4.0)</a>: 타코야끼의 시초! 소스 없이 육수 맛으로 먹는 담백하고 고소한 원조 타코야끼</li>
+                <li>[식사 대체안] <a href="https://www.google.com/maps/search/?api=1&query=Tsuruhashi+Fugetsu+Tempozan+Osaka" target="_blank">츠루하시 후게츠 덴포잔점 (구글 4.0)</a>: 아삭한 식감의 오코노미야끼 전문점</li>
                 <li><b>덴포잔 대관람차</b>, <b>산타마리아 리버크루즈</b>, <b>지라이언 뮤지엄</b> 차례로 관람</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" class="map-btn" target="_blank">📍 덴포잔 관람차 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=GLION+MUSEUM+Osaka" class="map-btn" target="_blank">📍 지라이언 뮤지엄 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Hokkyokusei+Tempozan+Osaka" class="map-btn" target="_blank">📍 북극성 오므라이스 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka" class="map-btn" target="_blank">📍 아이즈야 타코야끼 지도</a>
             </div>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 1] <a href="https://www.google.com/maps/search/?api=1&query=Cafe+1923+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">지라이언 카페 (Café 1923) 🗺️</a></div>
@@ -776,14 +829,16 @@
                 야키니쿠 무한리필 & 이자카야 🗺️
                 <span class="badge badge-primary">식사 & 야식</span>
             </div>
-            <div class="card-desc">투어를 마친 후 하차지 근처에서 화려한 야키니쿠 만찬을 진행합니다.</div>
+            <div class="card-desc">투어를 마친 후 하차지 근처에서 화려한 야키니쿠 만찬을 진행하며, 틈새 타코야끼 포장을 곁들입니다.</div>
             <ul class="detail-list">
                 <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" target="_blank">야키니쿠 리키마루 도톤보리점</a> (무한리필 고기 구이)</li>
+                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka" target="_blank">타코야끼 쿠쿠루 본점 (구글 4.0)</a>: 입에서 사르르 녹아내리는 식감과 커다란 문어 비주얼의 도톤보리 대표 타코야끼</li>
                 <li>[2차 이자카야] 도톤보리 골목의 분위기 좋은 이자카야</li>
                 <li>[편의점] 밤에 숙소에서 먹을 컵라면, 맥주 등 편의점 야식 구매</li>
             </ul>
             <div class="btn-group">
                 <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="map-btn" target="_blank">📍 리키마루 도톤보리 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka" class="map-btn" target="_blank">📍 쿠쿠루 타코야끼 지도</a>
             </div>
         </div>
     </div>
@@ -792,7 +847,7 @@
     <div id="day3" class="timeline">
         <!-- 아침 우동/라멘 및 그릇 쇼핑 -->
         <div class="timeline-card">
-            <div class="card-time">🕘 09:30 - 12:00</div>
+            <div class="card-time">        🕘 09:30 - 12:00</div>
             <div class="card-title">
                 <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">체크아웃 & 아침식사 & 그릇쇼핑 🗺️</a>
                 <span class="badge badge-primary">쇼핑 & 식사</span>
@@ -801,13 +856,15 @@
             <ul class="detail-list">
                 <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 소에몬쵸점</a>(우동) 또는 <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" target="_blank">잇푸도 난바점</a>(라멘)</li>
                 <li><b>도구야스지 그릇거리</b>: 예쁜 일본 그릇, 접시, 맥주컵, 사케 술잔 쇼핑</li>
+                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" target="_blank">타코야키 도라쿠 와나카 센니치마에 본점 (구글 4.2)</a>: 도구야스지 입구 위치. 겉바속촉의 정석이자 현지인 1위 타코야끼 맛집</li>
             </ul>
             <div class="btn-group">
                 <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" class="map-btn" target="_blank">📍 그릇거리 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" class="map-btn" target="_blank">📍 와나카 타코야끼 지도</a>
             </div>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 3] <a href="https://www.google.com/maps/search/?api=1&query=Marufuku+Coffee+Sennichimae+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">마루후쿠 커피점 센니치마에 본점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 드립 커피와 버터 토스트.</div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 드립 커피와 빈티지 핫케이크.</div>
             </div>
         </div>
 
@@ -844,51 +901,296 @@
             <div class="card-desc">난바역에서 캐리어를 찾고 특급 라피트를 타고 공항으로 출발합니다. (19:45 서울행 비행기)</div>
         </div>
     </div>
-
-    <!-- Convenience Store Food Guide -->
+    <!-- Convenience Store Food Guide with Accordion -->
     <div class="cvs-section">
-        <h2 class="section-title">🏪 일본 편의점 필수 시식 리스트</h2>
+        <div onclick="toggleCvsList()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-bottom: 15px;">
+            <h2 class="section-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">🏪 일본 편의점 필수 실물 사진 & 꿀조합</h2>
+            <button id="toggle-cvs-btn" style="background-color: var(--secondary-light); border: none; font-size: 11px; font-weight: 800; color: var(--secondary); padding: 6px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                <span>펼치기</span> <span id="toggle-cvs-icon">▼</span>
+            </button>
+        </div>
+
+        <div id="cvs-list-content" style="display: none; transition: var(--transition);">
+            
+            <!-- 로손 -->
+            <div class="cvs-card">
+                <div class="cvs-title" style="color: #008000; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 8px; margin-bottom: 12px; font-weight: 800;">🏪 LAWSON (로손 개별 실물 제품군)</div>
+                <ul class="cvs-list">
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">모찌뿌요 (Mochi Puyo)</span>
+                        <img src="lawson_mochipuyo.png" alt="모찌뿌요 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">쫀득한 찹쌀떡 식감의 반죽 속에 달달한 밀크 커스터드 생크림이 꽉 찬 인기 한입 디저트.</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">가라아게군 (Karage-kun)</span>
+                        <img src="lawson_karaage.png" alt="가라아게군 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">빨간 닭 캐릭터 컵에 담긴 한입 크기 순살 닭튀김 (매콤한 레드맛 강추).</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">타마고 샌드위치 (계란 샌드)</span>
+                        <img src="lawson_tamago.png" alt="로손 타마고 샌드위치 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">부드러운 식빵 사이에 달콤 짭조름하고 고소한 으깬 계란 마요가 가득 찬 정통 샌드.</div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">연어알 주먹밥 (이쿠라 오니기리)</span>
+                        <div class="cvs-item-desc">간장에 살짝 절여 톡톡 터지는 고급 생연어알이 든 검정 김 오니기리.</div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">과일 믹스 샌드위치</span>
+                        <div class="cvs-item-desc">신선한 딸기, 복숭아 등 생과일과 부드러운 생크림이 조화를 이루는 디저트 샌드.</div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">오코노미야키 & 야키소바 세트</span>
+                        <div class="cvs-item-desc">오사카 대표 철판 요리 오코노미야키와 야키소바를 한번에 맛보는 가성비 도시락.</div>
+                    </li>
+                    <li style="margin-bottom: 0;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">까르보나라 우동</span>
+                        <div class="cvs-item-desc">크리미한 치즈 크림소스에 베이컨과 쫄깃하고 통통한 우동 면을 비벼 먹는 명물 간편식.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 패밀리마트 -->
+            <div class="cvs-card">
+                <div class="cvs-title" style="color: #00A3E0; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 8px; margin-bottom: 12px; font-weight: 800;">🏪 FamilyMart (패밀리마트 개별 실물 제품군)</div>
+                <ul class="cvs-list">
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">파미치키 호네나시 (순살 파미치키)</span>
+                        <img src="famima_famichiki.png" alt="파미치키 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">노란/하얀 스프라이트 종이 봉투에 담아주는 패밀리마트 1위 순살 후라이드 치킨.</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">수플레 푸딩 (Souffle Pudding)</span>
+                        <img src="famima_souffle.png" alt="수플레 푸딩 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">투명 컵 푸딩 위에 동그랗고 푹신한 수플레 치즈 케이크를 얹은 극상의 디저트.</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">야키소바 빵</span>
+                        <img src="famima_yakisoba.png" alt="야키소바 빵 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">부드러운 핫도그 번 빵 안에 짭조름한 소스에 볶은 야키소바 면을 듬뿍 채운 빵.</div>
+                    </li>
+                    <li style="margin-bottom: 0;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">타마고 산도 (계란 샌드위치)</span>
+                        <div class="cvs-item-desc">풍부하고 몽글몽글한 계란 소스를 가득 채워 우유와 같이 먹기 좋은 샌드위치.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 세븐일레븐 -->
+            <div class="cvs-card">
+                <div class="cvs-title" style="color: #FF0000; border-bottom: 1.5px solid #E2E8F0; padding-bottom: 8px; margin-bottom: 12px; font-weight: 800;">🏪 Seven-Eleven (세븐일레븐 개별 실물 제품군)</div>
+                <ul class="cvs-list">
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">크림 브륄레 아이스크림</span>
+                        <img src="seven_brulee.png" alt="크림 브륄레 아이스크림 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">바삭하고 쌉싸름하게 구운 설탕 토핑 아래에 진한 노란색 커스터드 아이스크림이 든 컵.</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">몽고탄멘 나카모토 (매운 컵라면)</span>
+                        <img src="seven_mongolian.png" alt="몽고탄멘 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">강렬한 빨간색 포장의 중독성 강한 얼큰한 해장용 매운 마파두부풍 라멘 컵라면.</div>
+                    </li>
+                    <li style="margin-bottom: 16px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">부타가쿠니 (삼겹 조림)</span>
+                        <img src="seven_buta.png" alt="부타가쿠니 실물 사진" style="width: 100%; max-width: 160px; border-radius: 8px; border: 1px solid #E2E8F0; display: block; margin: 6px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                        <div class="cvs-item-desc">두툼한 삼겹살을 오랫동안 간장에 푹 졸여내어 젓가락으로 으깨지는 초호화 삼겹살 반찬/안주.</div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">낫토 초밥 (낫토 호소마키)</span>
+                        <div class="cvs-item-desc">초밥 밥과 김 안에 구수한 낫토를 돌돌 말아 하나씩 먹기 편하게 비닐 포장된 롤초밥.</div>
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">반숙란 (아지츠케 타마고)</span>
+                        <div class="cvs-item-desc">노른자가 촉촉하고 쫀득하게 삶아져 속까지 짭짤하게 양념 간이 잘 밴 고품격 온천 계란.</div>
+                    </li>
+                    <li style="margin-bottom: 0;">
+                        <span class="cvs-item-name" style="font-size: 13px; color: var(--text-main);">오뎅 (어묵 바)</span>
+                        <div class="cvs-item-desc">사계절 카운터 옆 온수 오뎅 냄비에서 기호대로 골라 담는 일본 겨울 대표 오뎅바. (무, 곤약 강추)</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 꿀조합 섹션 -->
+            <div class="cvs-card" style="background-color: #F0FDF4; border: 1px solid #BBF7D0;">
+                <div class="cvs-title" style="color: #166534; border-bottom: 1.5px solid #DCFCE7; padding-bottom: 8px; margin-bottom: 12px; font-weight: 800;">🧪 여행을 편안하게 만드는 편의점 실물 꿀조합</div>
+                <ul class="cvs-list">
+                    <li style="border-bottom: 1px dashed #DCFCE7; margin-bottom: 14px; padding-bottom: 14px;">
+                        <span class="cvs-item-name" style="color: #15803D; font-size: 13.5px;">💩 [쾌변 보장 조합] 파이브미니 + 곤약젤리</span>
+                        <div style="display: flex; gap: 8px; margin: 8px 0; align-items: center;">
+                            <div style="text-align: center;">
+                                <img src="combo_fibemini.png" alt="파이브미니 실물 사진" style="width: 100%; max-width: 110px; border-radius: 8px; border: 1px solid #C8E6C9; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: block; margin: 0 auto 4px auto;">
+                                <span style="font-size: 9.5px; color: #166534; font-weight: 700;">파이브미니</span>
+                            </div>
+                            <span style="font-size: 20px; color: #15803D; font-weight: bold; padding: 0 4px;">+</span>
+                            <div style="text-align: center;">
+                                <img src="combo_jelly.png" alt="오리히로 곤약젤리 실물 사진" style="width: 100%; max-width: 110px; border-radius: 8px; border: 1px solid #C8E6C9; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: block; margin: 0 auto 4px auto;">
+                                <span style="font-size: 9.5px; color: #166534; font-weight: 700;">오리히로 곤약젤리</span>
+                            </div>
+                        </div>
+                        <div class="cvs-item-desc" style="color: #166534;">밀가루와 기름진 소고기 식사로 막힌 속을 상쾌하게 뚫어주는 식이섬유 탄산음료(파이브미니)와 곤약 젤리 조합입니다. 아침 공복에 드시면 가장 효과적입니다.</div>
+                    </li>
+                    <li style="border-bottom: none;">
+                        <span class="cvs-item-name" style="color: #15803D; font-size: 13.5px;">🔋 [피로 회복 조합] 무쿠미(붓기) 해소 음료 + 에너지 젤리</span>
+                        <div style="display: flex; gap: 8px; margin: 8px 0; align-items: center;">
+                            <div style="text-align: center;">
+                                <img src="combo_mukumi.png" alt="키レート레몬 MUKUMI 실물 사진" style="width: 100%; max-width: 110px; border-radius: 8px; border: 1px solid #C8E6C9; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: block; margin: 0 auto 4px auto;">
+                                <span style="font-size: 9.5px; color: #166534; font-weight: 700;">키レート레몬 MUKUMI</span>
+                            </div>
+                            <span style="font-size: 20px; color: #15803D; font-weight: bold; padding: 0 4px;">+</span>
+                            <div style="text-align: center;">
+                                <img src="combo_energy.png" alt="in젤리 에너지 실물 사진" style="width: 100%; max-width: 110px; border-radius: 8px; border: 1px solid #C8E6C9; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: block; margin: 0 auto 4px auto;">
+                                <span style="font-size: 9.5px; color: #166534; font-weight: 700;">in젤리 에너지</span>
+                            </div>
+                        </div>
+                        <div class="cvs-item-desc" style="color: #166534;">2만 보 이상 걷는 전신 피로와 다리 붓기(무쿠미) 완화를 돕는 꿀조합. 붓기 배출을 돕는 무쿠미 차류로 순환을 활발히 하고, 빠르게 흡수되어 에너지를 주는 포도당/타우린 젤리로 활력을 즉시 채웁니다.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Section Grid with Accordion -->
+    <div class="food-section">
+        <div onclick="toggleFoodList()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-bottom: 15px;">
+            <h2 class="section-title" style="margin: 0; display: flex; align-items: center; gap: 8px;">🍱 저장하신 위시리스트 추천 맛집</h2>
+            <button id="toggle-food-btn" style="background-color: var(--primary-light); border: none; font-size: 11px; font-weight: 800; color: var(--primary); padding: 6px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                <span>펼치기</span> <span id="toggle-icon">▼</span>
+            </button>
+        </div>
         
-        <div class="cvs-card">
-            <div class="cvs-title" style="color: #008000;">🏪 LAWSON (로손)</div>
-            <ul class="cvs-list">
-                <li>
-                    <span class="cvs-item-name">모찌롤 (Uchi Café 프리미엄 롤)</span>
-                    <div class="cvs-item-desc">쫀득한 모찌 식감의 빵에 부드럽고 달콤한 우유 생크림이 가득 찬 오사카 편의점 부동의 1위 디저트.</div>
-                </li>
-                <li>
-                    <span class="cvs-item-name">카라아게군</span>
-                    <div class="cvs-item-desc">따끈하게 보관된 닭튀김 한입 거리 컵 치킨 (매콤한 레드맛 또는 치즈맛 강력 추천).</div>
-                </li>
-            </ul>
-        </div>
+        <div id="food-list-content" style="display: none; transition: var(--transition);">
+            <!-- 테마 1: 쿠시카츠 -->
+            <div class="theme-group" style="margin-bottom: 20px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍢 바삭한 쿠시카츠 명가</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">야에카츠 (신세카이)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">꼬치카츠 시로타야</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Shirotaya+Dotonbori+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="cvs-card">
-            <div class="cvs-title" style="color: #FF0000;">🏪 Seven-Eleven (세븐일레븐)</div>
-            <ul class="cvs-list">
-                <li>
-                    <span class="cvs-item-name">타마고 산도 (계란 샌드위치)</span>
-                    <div class="cvs-item-desc">부드러운 식빵 사이에 달콤 짭조름하고 몽글몽글한 으깬 계란 마요가 가득 들어있어 아침 식사로 안성맞춤.</div>
-                </li>
-                <li>
-                    <span class="cvs-item-name">야끼소바 빵</span>
-                    <div class="cvs-item-desc">짭조름한 볶음우동 면을 부드러운 핫도그 번 빵에 채워 넣어 든든하게 한 끼 떼우기 좋은 정통 일식 빵.</div>
-                </li>
-            </ul>
-        </div>
+            <!-- 테마 2: 스시 -->
+            <div class="theme-group" style="margin-bottom: 20px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍣 신선한 정통 스시 (초밥)</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">마구로 잇테츠 스시</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">카미나리 스시</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Kaminari+Sushi+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">우오신 센니치마에</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Uoshin+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="cvs-card">
-            <div class="cvs-title" style="color: #00A3E0;">🏪 FamilyMart (패밀리마트)</div>
-            <ul class="cvs-list">
-                <li>
-                    <span class="cvs-item-name">파미치키 (FamiChiki)</span>
-                    <div class="cvs-item-desc">일본 편의점 치킨 중에서 가장 육즙이 많고 짭조름하여 맥주 안주로 독보적인 인기를 자랑하는 순살 치킨.</div>
-                </li>
-                <li>
-                    <span class="cvs-item-name">수플레 푸딩</span>
-                    <div class="cvs-item-desc">달콤하고 부드러운 커스터드 푸딩 위에 두툼하고 푹신한 수플레 치즈케이크가 얹어진 최강의 콤보 디저트.</div>
-                </li>
-            </ul>
+            <!-- 테마 3: 장어덮밥 -->
+            <div class="theme-group" style="margin-bottom: 20px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍱 든든한 장어덮밥 (우나기)</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">장어의 나카쇼</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">우나기야 카도</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Unagiya+Kado+Namba+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 테마 4: 우동/라멘 -->
+            <div class="theme-group" style="margin-bottom: 20px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍜 뜨끈한 우동 & 라멘</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">츠루통탄 소에몬쵸</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">잇푸도 라멘 난바</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 테마 5: 스키야키 / 야끼니꾸 -->
+            <div class="theme-group" style="margin-bottom: 20px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🥩 정통 스키야키 & 야끼니꾸</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">스키야키 호쿠토</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">니혼바시 츠루야</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Shabushab+Nihonbashi+Tsuruya+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">야키니쿠 리키마루</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 테마 6: 타코야끼 / 이자카야 / 디저트 -->
+            <div class="theme-group" style="margin-bottom: 10px;">
+                <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍡 타코야끼 & 이자카야 & 디저트</h3>
+                <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">도라쿠 와나카 본점</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">타코야끼 쿠쿠루 본점</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">아이즈야 덴포잔점</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">숯불구이 유지로</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">사사야 난바점</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sasaya+Namba+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">하브스 난바파크스</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Tips -->
+    <div class="quick-tips">
+        <h2 class="section-title">💡 여행 준비 & 이동 꿀팁</h2>
+        <div class="tip-card">
+            <div class="tip-item">
+                <div class="tip-title">🚃 난바 ↔ 오사카코 환승</div>
+                <div class="tip-desc">난바역 ➔ 혼마치역(미도스지선) ➔ 오사카코역(주오선) 환승이 가장 빠릅니다.</div>
+            </div>
+            <div class="tip-item">
+                <div class="tip-title">🎟️ 주유패스 혜택</div>
+                <div class="tip-desc">첫날 산타마리아 크루즈, 관람차, 뮤지엄, 오사카성 공원 등 1일 패스로 입장료를 모두 아낄 수 있습니다.</div>
+            </div>
+            <div class="tip-item">
+                <div class="tip-title">🥩 야키니쿠 예약</div>
+                <div class="tip-desc">토요일 저녁 리키마루 야키니쿠는 웨이팅이 길어 꼭 여행 전 예약을 해두시는 편이 편안합니다.</div>
+            </div>
         </div>
     </div>
 
@@ -922,6 +1224,38 @@
     function copyURL() {
         navigator.clipboard.writeText(window.location.href);
         alert('일정표 주소가 복사되었습니다! 가족들에게 공유하세요. 😉');
+    }
+
+    function toggleFoodList() {
+        const content = document.getElementById('food-list-content');
+        const btnSpan = document.querySelector('#toggle-food-btn span:first-child');
+        const iconSpan = document.getElementById('toggle-icon');
+        
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            btnSpan.textContent = '감추기';
+            iconSpan.textContent = '▲';
+        } else {
+            content.style.display = 'none';
+            btnSpan.textContent = '펼치기';
+            iconSpan.textContent = '▼';
+        }
+    }
+
+    function toggleCvsList() {
+        const content = document.getElementById('cvs-list-content');
+        const btnSpan = document.querySelector('#toggle-cvs-btn span:first-child');
+        const iconSpan = document.getElementById('toggle-cvs-icon');
+        
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'block';
+            btnSpan.textContent = '감추기';
+            iconSpan.textContent = '▲';
+        } else {
+            content.style.display = 'none';
+            btnSpan.textContent = '펼치기';
+            iconSpan.textContent = '▼';
+        }
     }
 </script>
 </body>
