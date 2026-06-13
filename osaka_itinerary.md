@@ -174,33 +174,55 @@
 ## 🍱 구글지도에 저장하신 위시리스트 추천 맛집 리스트
 가족들과 함께 가실 수 있도록, 구글지도에서 추출한 카테고리별 위시리스트 맛집 목록을 정리했습니다. 일정 동선과 밀접하여 언제든지 활용 가능합니다!
 
-### 🥩 스키야키 / 야끼니꾸
-* **[스키야키] 스키야키 호쿠토**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka) | 난바역 인근, 정통 간장 양념의 고급 스키야키
-* **[스키야키] 니혼바시 츠루야**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sukiyaki+Shabushab+Nihonbashi+Tsuruya+Osaka) | 니혼바시 인근, 깔끔하고 조용한 스키야키 전문점
-* **[야끼니꾸] 야키니쿠 리키마루 도톤보리점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka) | 고품질 소고기 무한리필(예약 권장)
-* **[야끼니꾸] Yakiniku Lab Umeda**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Lab+Umeda+Osaka) | 우메다 인근 트렌디한 야끼니꾸 맛집
+### 🍢 쿠시카츠 & 오코노미야끼
+* **꼬치카츠 시로타야 본점 (도톤보리)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kushikatsu+Shirotaya+Dotonbori+Osaka)
+* **쿠시카츠 아게텐캇! 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kushikatsu+Agetenkat+Namba+Osaka)
+* **쿠시카츠 잇토쿠 도톤보리 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kushikatsu+Ittoku+Dotonbori+Osaka)
+* **후쿠타로 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Fukutaro+Namba+Osaka) | 네기야끼/오코노미야끼 명가
+* **아지노야 오코노미야끼**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Ajinoya+Okonomiyaki+Osaka)
+* **츠루하시 후게츠 (우메다 한큐 29F)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Tsuruhashi+Fugetsu+Hankyu+Grand+Building+Osaka)
+* **야에카츠**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka) | 신세카이 쿠시카츠
 
-### 🍤 쿠시카츠 / 오코노미야끼
-* **[쿠시카츠] 야에카츠**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka) | 신세카이(츠텐카쿠) 인근, 원조 바삭한 꼬치 튀김
-* **[쿠시카츠] 꼬치카츠 시로타야**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kushikatsu+Shirotaya+Dotonbori+Osaka) | 도톤보리 내 위치, 한국어 메뉴판 완비
-* **[오코노미야끼] 아지노야 오코노미야끼**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Ajinoya+Okonomiyaki+Osaka) | 난바 인근, 오랜 역사의 양배추 듬뿍 오코노미야끼
-* **[오코노미야끼] 후쿠타로 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Fukutaro+Namba+Osaka) | 난바 난카이 빌딩 인근, 네기야끼(파전 스타일) 명가
+### 🍣 스시 (초밥) & 해산물
+* **타치스시 마구로 잇테츠 센니치마에점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka)
+* **카미나리 스시**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kaminari+Sushi+Osaka) | 아담하고 맛있는 판스시
+* **우오신 센니치마에점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Uoshin+Sennichimae+Osaka) | 한입 가득 대왕초밥
+* **스시일심 (스시 잇신 - 우메다)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sushi+Isshin+Doyamacho+Osaka)
+* **Kotobuki**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kotobuki+Nipponbashi+Osaka) | 난바 역 근처 스시/이자카야
+* **酒ト肴 漁師酒場 (료시사카바)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Ryoshi+Sakaba+Nipponbashi+Osaka) | 해산물 안주 일품
 
-### 🍣 스시 (초밥) / 장어덮밥 (우나기)
-* **[스시] 타치스시 마구로 잇테츠**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka) | 참치 초밥 및 싱싱한 활어회가 유명한 로컬 맛집
-* **[스시] 카미나리 스시**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kaminari+Sushi+Osaka) | 조용하고 아담한 분위기의 정통 판스시 전문점
-* **[스시] 우오신 센니치마에점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Uoshin+Sennichimae+Osaka) | 큼직한 네타(생선회)가 올라가서 눈과 입이 즐거운 식당
-* **[장어덮밥] 장어의 나카쇼 신사이바시점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka) | 정통 나고야식 히츠마부시 장어덮밥 전문점
-* **[장어덮밥] 우나기야 카도 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Unagiya+Kado+Namba+Osaka) | 난바 근처의 맛있는 장어 전문 로컬 맛집
+### 🍱 장어덮밥 (우나기)
+* **장어의 나카쇼 신사이바시점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka)
+* **우나기야 카도 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Unagiya+Kado+Namba+Osaka)
+* **히츠마부시 110 it.**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Hitsumabushi+110+it.+Osaka)
+* **이즈모 루쿠아 (우메다 루쿠아 B2F)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Izumo+Lucua+Osaka)
 
 ### 🍜 우동 / 라멘 / 타코야끼
-* **[우동] 츠루통탄 소에몬쵸점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka) | 커다란 그릇에 나오는 쫄깃한 면발 och 진한 국물 우동
-* **[라멘] 잇푸도 라멘 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka) | 깊고 뽀얀 국물의 돈코츠 라멘
-* **[타코야끼] 타코야키 도라쿠 와나카 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka) | 겉바속촉 정석 (그릇거리 인근)
-* **[타코야끼] 야키소바 쿠쿠루 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka) | 입에서 살살 녹는 식감 (도톤보리 한복판)
-* **[타코야끼] 아이즈야 덴포잔점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka) | 소스 없이 먹는 원조 타코야끼 (덴포잔)
+* **츠루통탄 소에몬쵸점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka)
+* **잇푸도 라멘 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka)
+* **Udon Tamatama**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Udon+Tamatama+Higashishinsaibashi+Osaka) | 신사이바시 우동
+* **다코야키 도라쿠 와나카 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Namba+Osaka)
+* **타코야끼 쿠쿠루 본점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Osaka)
+* **타코우메**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Takoume+Dotonbori+Osaka) | 도톤보리 정통 오뎅/타코
 
-### 🍺 이자카야 / 야키토리 / 디저트
-* **[야키토리] 숯불구이 유지로**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka) | KOKO 호텔 뒤편 숯불 야키토리 전문 로컬 이자카야
-* **[야키토리] 사사야 난바점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sasaya+Namba+Sennichimae+Osaka) | 닭 특수부위 구이 및 맥주 한잔하기 좋은 이자카야
-* **[디저트] 하브스 난바파크스점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks+Osaka) | 제철 과일이 듬뿍 든 밀크 크레이프 조각 케이크 명소
+### 🥩 정통 스키야키 & 야끼니꾸
+* **스키야키 호쿠토**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka)
+* **스키야키 샤브샤브 니혼바시 츠루야**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sukiyaki+Nihonbashi+Tsuruya+Osaka)
+* **야키니쿠 리키마루 도톤보리점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka)
+* **야키니쿠 리키마루 센니치마에점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Sennichimae+Osaka)
+* **Yakiniku Lab Umeda**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Lab+Umeda+Osaka)
+* **Tarochan**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Tarochan+Sennichimae+Osaka) | 난바 야끼니꾸
+* **Daibokujou**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakiniku+Daibokujou+Dotonbori+Osaka) | 야끼니꾸 무한리필
+
+### 🍺 분위기 좋은 이자카야 / 야키토리 / 디저트
+* **숯불구이 유지로 (숯불구이 유지로)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sumiyaki+Yujirou+Sennichimae+Osaka)
+* **사사야 난바 센니치마에점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Sasaya+Namba+Sennichimae+Osaka)
+* **야키토리 마츠리 (우메다 도지마)**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Yakitori+Matsuri+Dojima+Osaka)
+* **하브스 난바파크스점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks+Osaka)
+* **토리사카바 난바**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Torisakaba+Namba+Osaka)
+* **도톤보리 쿠로후네 난바천일전**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Dotonbori+Kurofune+Namba+Osaka)
+* **와타미 Watami**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Watami+Namba+Osaka)
+* **테판진자 도톤보리점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Teppan+Jinja+Dotonbori+Osaka)
+* **메시야 24시 센니치마에**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Meshiya+24h+Sennichimae+Osaka)
+* **Kushiniwa**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kushiniwa+Nipponbashi+Osaka)
+* **쿠로몬 토레피치 시장 남쿠로몬점**: [구글지도 ➔](https://www.google.com/maps/search/?api=1&query=Kuromon+Torepichi+Market+Osaka)
