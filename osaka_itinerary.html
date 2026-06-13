@@ -122,6 +122,10 @@
         .info-item {
             text-align: center;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .info-item:not(:last-child) {
@@ -459,6 +463,58 @@
             text-decoration: underline;
         }
 
+        /* Convenience Store Section */
+        .cvs-section {
+            padding: 0 24px;
+            margin-top: 15px;
+        }
+
+        .cvs-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .cvs-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cvs-list {
+            list-style: none;
+        }
+
+        .cvs-list li {
+            font-size: 13px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .cvs-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .cvs-item-name {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .cvs-item-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
         /* Quick Tips */
         .quick-tips {
             padding: 0 24px 40px 24px;
@@ -539,14 +595,6 @@
             color: var(--text-muted);
             font-weight: 500;
         }
-        
-        /* Map Icon Style */
-        .map-icon {
-            display: inline-block;
-            font-size: 11px;
-            vertical-align: middle;
-            margin-left: 2px;
-        }
     </style>
 </head>
 <body>
@@ -571,7 +619,7 @@
         </div>
         <div class="info-item">
             <div class="info-label">2일차 투어</div>
-            <div class="info-value">일일 버스 투어</div>
+            <div class="info-value"><a href="https://experiences.myrealtrip.com/products/3153601" target="_blank" style="color: var(--secondary); text-decoration: underline;">버스투어 링크</a></div>
         </div>
         <div class="info-item">
             <div class="info-label">승하차지</div>
@@ -590,36 +638,49 @@
 
     <!-- DAY 1 TIMELINE -->
     <div id="day1" class="timeline active">
-        <!-- 짐보관 -->
+        <!-- 공항 도착 및 551호라이 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕙 10:00 - 12:00</div>
+            <div class="card-time">🕘 09:00 - 10:30</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">입국 & KOKO 호텔 짐 보관 🗺️</a>
-                <span class="badge badge-secondary">이동</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">간사이공항 도착 & 551호라이 🗺️</a>
+                <span class="badge badge-secondary">도착</span>
             </div>
-            <div class="card-desc">간사이 국제공항에 도착하여 라피트를 타고 난바역에 내려 호텔에 캐리어를 위탁합니다.</div>
+            <div class="card-desc">아침 비행기로 오사카 공항에 내려 유명한 호라이만두를 구매해 라피트로 이동합니다.</div>
             <ul class="detail-list">
-                <li>라피트는 한국에서 사전 예약된 모바일 티켓 활용</li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">KOKO 호텔 오사카 난바</a> 프런트에 짐을 무료로 맡길 수 있습니다.</li>
+                <li>공항 내 <a href="https://www.google.com/maps/search/?api=1&query=551+Horai+Kansai+Airport" target="_blank">551 호라이 만두</a>에서 부타만(왕만두) 포장</li>
+                <li>특급 라피트 열차 안에서 이동하며 가볍게 시식 (열차 내 조용히 취식)</li>
             </ul>
         </div>
 
-        <!-- 덴포잔 -->
+        <!-- 크루즈 예매 및 호텔 짐 보관 -->
+        <div class="timeline-card tour">
+            <div class="card-time">🕚 10:30 - 12:00</div>
+            <div class="card-title">
+                크루즈 매표 & KOKO 호텔 짐 보관 🗺️
+                <span class="badge badge-secondary">이동</span>
+            </div>
+            <div class="card-desc">라피트 하차 후 숙소로 이동하는 동선에서 크루즈 매표소를 들러 저녁 크루즈를 예매합니다.</div>
+            <ul class="detail-list">
+                <li>도톤보리 강가 돈키호테 앞 매표소에서 저녁에 탈 <a href="https://www.google.com/maps/search/?api=1&query=Tombori+River+Cruise" target="_blank">톤보리 리버크루즈</a>를 주유패스 혜택으로 미리 예매</li>
+                <li>이후 KOKO 호텔 난바로 이동해 캐리어를 맡김</li>
+            </ul>
+        </div>
+
+        <!-- 덴포잔 관광 및 점심 -->
         <div class="timeline-card">
             <div class="card-time">🕛 12:00 - 15:00</div>
             <div class="card-title">
                 <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" target="_blank">덴포잔 베이 에어리어 관광 🗺️</a>
                 <span class="badge badge-primary">관광 & 식사</span>
             </div>
-            <div class="card-desc">오사카 1일 패스를 개시하여 크루즈, 관람차 등을 무료 탑승합니다. (장소명을 선택하면 지도가 열립니다)</div>
+            <div class="card-desc">오사카 1일 패스를 개시하여 덴포잔 관광지 3곳을 도는 알찬 동선입니다.</div>
             <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=天ぷら+えびちゃん+Chikko+Minato+Ward+Osaka" target="_blank">天ぷら えびちゃん (텐푸라 에비짱 정식)</a></li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" target="_blank">덴포잔 대관람차</a> & <a href="https://www.google.com/maps/search/?api=1&query=Santa+Maria+Cruise+Osaka" target="_blank">산타마리아 리버크루즈</a> 탑승</li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=GLION+MUSEUM+Osaka" target="_blank">지라이언 뮤지엄</a> 클래식 자동차 관람</li>
+                <li>[식사] 덴포잔 마켓플레이스 내 오사카 패스 제휴 음식점(예: 자유켄 카레 등) 점심 식사</li>
+                <li><b>덴포잔 대관람차</b>, <b>산타마리아 리버크루즈</b>, <b>지라이언 뮤지엄</b> 차례로 관람</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=天ぷら+えびちゃん+Chikko+Minato+Ward+Osaka" class="map-btn" target="_blank">📍 텐푸라 에비짱 지도</a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" class="map-btn" target="_blank">📍 덴포잔 관람차 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=GLION+MUSEUM+Osaka" class="map-btn" target="_blank">📍 지라이언 뮤지엄 지도</a>
             </div>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 1] <a href="https://www.google.com/maps/search/?api=1&query=Cafe+1923+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">지라이언 카페 (Café 1923) 🗺️</a></div>
@@ -627,226 +688,207 @@
             </div>
         </div>
 
-        <!-- 오사카성 -->
+        <!-- 호텔 체크인 및 오사카성 -->
         <div class="timeline-card">
             <div class="card-time">🕒 15:00 - 17:30</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">호텔 체크인 & 오사카성 🗺️</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">호텔 체크인 & 오사카성 관광 🗺️</a>
                 <span class="badge badge-primary">관광</span>
             </div>
-            <div class="card-desc">체크인 후 오사카성으로 이동하여 가벼운 산책을 진행합니다.</div>
+            <div class="card-desc">호텔에 체크인하여 재정비를 마친 뒤, 오사카성 공원으로 이동합니다.</div>
             <ul class="detail-list">
-                <li>호텔 체크인 후 15분간 재정비 및 휴식</li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각</a>은 16:30 입장 마감이니 동선 서두르기</li>
+                <li>호텔 체크인 후 잠시 휴식</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각</a> 내부 구경 및 공원 산책</li>
+                <li>* 시간 여유가 있을 시 <a href="https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building+Kuchu+Teien+Observatory" target="_blank">우메다 공중정원</a> 야경 관람 선택 가능</li>
             </ul>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 2] <a href="https://www.google.com/maps/search/?api=1&query=R+Baker+Osaka+Castle+Park" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">R Baker 오사카성 공원점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">숲속 정원에 둘러싸인 야외 테라스 베이커리 카페 (엄마 힐링 추천).</div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">숲속 정원에 둘러싸인 야외 테라스 베이커리 카페.</div>
             </div>
         </div>
 
-        <!-- 츠텐카쿠 -->
+        <!-- 츠텐카쿠 및 2일차 아침 포장 -->
         <div class="timeline-card">
-            <div class="card-time">🕕 17:30 - 20:30</div>
+            <div class="card-time">🕕 17:30 - 19:30</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">신세카이 츠텐카쿠 & 쿠시카츠 🗺️</a>
-                <span class="badge badge-primary">관광 & 식사</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">츠텐카쿠 & 오니기리 포장 🗺️</a>
+                <span class="badge badge-primary">쇼핑 & 시식</span>
             </div>
-            <div class="card-desc">레트로 오사카 감성이 살아있는 츠텐카쿠 야경 관람과 저녁 식사</div>
+            <div class="card-desc">신세카이 츠텐카쿠 야경을 보며 간단히 꼬치를 시식하고 다음날 아침용 주먹밥을 포장합니다.</div>
             <ul class="detail-list">
-                <li>[틈새 가챠] <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">츠텐카쿠</a> 인근 골목 로컬 가챠샵 투어</li>
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank">야에카츠</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Oji+Osaka" target="_blank">쿠시카츠 오오지</a></li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank">야에카츠</a> 등에서 원조 쿠시카츠 가볍게 시식</li>
+                <li>[포장] <a href="https://www.google.com/maps/search/?api=1&query=Onigiri+Gorichan+Ebisu+Yokocho+Osaka" target="_blank">오니기리 고리짱 에비스요코초점</a>에서 큼직한 주먹밥 포장 (2일차 버스 안 또는 아침 식사용)</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="map-btn" target="_blank">📍 야에카츠 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" class="map-btn" target="_blank">📍 츠텐카쿠 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Onigiri+Gorichan+Ebisu+Yokocho+Osaka" class="map-btn" target="_blank">📍 오니기리 고리짱 지도</a>
             </div>
         </div>
 
-        <!-- 야식 -->
+        <!-- 저녁 스키야키 및 2차 이자카야 -->
         <div class="timeline-card cafe">
-            <div class="card-time">🕘 20:30 -</div>
+            <div class="card-time">🕖 19:30 -</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Den+Den+Town+Osaka" target="_blank">호텔 인근 복귀 및 이자카야 🗺️</a>
-                <span class="badge badge-accent">야식</span>
+                스키야키 만찬 & 이자카야 🗺️
+                <span class="badge badge-accent">식사 & 야식</span>
             </div>
-            <div class="card-desc">KOKO 호텔 인근 덴덴타운 가챠샵 구경 및 야키토리 한잔</div>
+            <div class="card-desc">호텔 근처로 돌아와 고급 스키야키로 든든한 본저녁식사를 합니다.</div>
             <ul class="detail-list">
-                <li>KOKO 호텔 뒤편의 <a href="https://www.google.com/maps/search/?api=1&query=Den+Den+Town+Osaka" target="_blank">덴덴타운</a> 가챠샵 투어</li>
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka" target="_blank">숯불구이 유지로</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Sasaya+Namba+Sennichimae+Osaka" target="_blank">사사야 센니치마에점</a></li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">스키야키 호쿠토</a>에서 간장 베이스 고기와 계란물 만찬</li>
+                <li>[2차 이자카야] KOKO 호텔 근처 <a href="https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka" target="_blank">숯불구이 유지로</a>에서 야키토리와 사케</li>
+                <li>[편의점] 복귀 길에 편의점에 들러 야식 및 내일 아침 음료수 구매</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka" class="map-btn" target="_blank">📍 숯불구이 유지로 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="map-btn" target="_blank">📍 스키야키 호쿠토 지도</a>
             </div>
         </div>
     </div>
 
     <!-- DAY 2 TIMELINE -->
     <div id="day2" class="timeline">
+        <!-- 투어 출발 전 아침 식사 -->
+        <div class="timeline-card">
+            <div class="card-time">🕖 07:00 - 08:00</div>
+            <div class="card-title">
+                숙소 아침식사 & 투어 집결
+                <span class="badge badge-primary">아침 식사</span>
+            </div>
+            <div class="card-desc">어제 포장해 둔 오니기리 고리짱 주먹밥과 편의점 식품으로 든든한 아침을 먹고 출발합니다.</div>
+        </div>
+
         <!-- 일일버스투어 -->
         <div class="timeline-card tour">
             <div class="card-time">🕗 08:00 - 19:30</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">일일 버스 투어 (교토/나라 등) 🗺️</a>
+                <a href="https://experiences.myrealtrip.com/products/3153601" target="_blank">교토 일일 버스 투어 진행 🗺️</a>
                 <span class="badge badge-secondary">투어</span>
             </div>
-            <div class="card-desc">미팅 장소인 도톤보리 츠루통탄 앞으로 이동해 가이드 투어를 받습니다.</div>
+            <div class="card-desc">소에몬쵸 츠루통탄 앞에서 가이드 버스 투어를 탑승해 교토를 관광합니다.</div>
             <ul class="detail-list">
-                <li>호텔에서 미팅장소인 <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">소에몬쵸 츠루통탄</a>까지 도보 5~10분 소요</li>
-                <li>하루 일정 중 중식은 관광지 자유식으로 진행</li>
+                <li>KOKO 호텔에서 도보 5~10분 거리에 집결지 위치</li>
+                <li>투어 코스: 아라시야마 ➔ 금각사 ➔ 청수사 ➔ 여우신사</li>
             </ul>
         </div>
 
-        <!-- 저녁식사 -->
+        <!-- 저녁식사 야키니쿠 및 2차 -->
         <div class="timeline-card">
             <div class="card-time">🕖 19:30 -</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">버스 하차 후 저녁 식사 🗺️</a>
-                <span class="badge badge-primary">식사</span>
+                야키니쿠 무한리필 & 이자카야 🗺️
+                <span class="badge badge-primary">식사 & 야식</span>
             </div>
-            <div class="card-desc">피로한 몸을 달래줄 닛폰바시 인근 최고의 만찬 코스</div>
+            <div class="card-desc">투어를 마친 후 하차지 근처에서 화려한 야키니쿠 만찬을 진행합니다.</div>
             <ul class="detail-list">
-                <li>[추천 A] <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" target="_blank">야키니쿠 리키마루 도톤보리점</a> *주말 예약 필수</li>
-                <li>[추천 B] <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 소에몬쵸점</a> (세숫대야 우동)</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" target="_blank">야키니쿠 리키마루 도톤보리점</a> (무한리필 고기 구이)</li>
+                <li>[2차 이자카야] 도톤보리 골목의 분위기 좋은 이자카야</li>
+                <li>[편의점] 밤에 숙소에서 먹을 컵라면, 맥주 등 편의점 야식 구매</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="map-btn" target="_blank">📍 리키마루 도톤보리점</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" class="map-btn" target="_blank">📍 츠루통탄 지도</a>
-            </div>
-            <div class="tip-box">
-                ℹ️ 토요일 저녁 도톤보리는 웨이팅이 극심하므로 야키니쿠는 미리 예약하고 가시는 편이 안전합니다.
+                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="map-btn" target="_blank">📍 리키마루 도톤보리 지도</a>
             </div>
         </div>
     </div>
 
     <!-- DAY 3 TIMELINE -->
     <div id="day3" class="timeline">
-        <!-- 오전 -->
+        <!-- 아침 우동/라멘 및 그릇 쇼핑 -->
         <div class="timeline-card">
-            <div class="card-time">🕘 09:30 - 11:30</div>
+            <div class="card-time">🕘 09:30 - 12:00</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">체크아웃 & 라멘 & 그릇쇼핑 🗺️</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">체크아웃 & 아침식사 & 그릇쇼핑 🗺️</a>
                 <span class="badge badge-primary">쇼핑 & 식사</span>
             </div>
-            <div class="card-desc">어머니 취향 저격 식기/그릇 쇼핑 및 아침 해장 라멘</div>
+            <div class="card-desc">체크아웃 후 짐을 맡기고 맛있는 아침을 먹은 뒤 그릇 상점을 구경합니다.</div>
             <ul class="detail-list">
-                <li>체크아웃 후 캐리어를 호텔 또는 난바역에 보관</li>
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" target="_blank">잇푸도 난바점</a> (돈코츠 라멘 아침 식사)</li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">도구야스지 그릇거리</a>: 일본 밥그릇, 접시, 맥주잔, 술잔 쇼핑</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 소에몬쵸점</a>(우동) 또는 <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" target="_blank">잇푸도 난바점</a>(라멘)</li>
+                <li><b>도구야스지 그릇거리</b>: 예쁜 일본 그릇, 접시, 맥주컵, 사케 술잔 쇼핑</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" class="map-btn" target="_blank">📍 잇푸도 난바점 지도</a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" class="map-btn" target="_blank">📍 그릇거리 지도</a>
             </div>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 3] <a href="https://www.google.com/maps/search/?api=1&query=Marufuku+Coffee+Sennichimae+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">마루후쿠 커피점 센니치마에 본점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 융드립 커피와 빈티지 핫케이크.</div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 드립 커피와 버터 토스트.</div>
             </div>
         </div>
 
-        <!-- 스키야키 & 가챠 -->
+        <!-- 점심식사 및 가챠 & 디저트 -->
         <div class="timeline-card">
-            <div class="card-time">🕛 11:30 - 14:00</div>
+            <div class="card-time">🕛 12:00 - 15:30</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">스키야키 점심 & 대형 가챠샵 🗺️</a>
+                점심(장어/규카츠) & 가챠 & 디저트 🗺️
                 <span class="badge badge-primary">쇼핑 & 식사</span>
             </div>
-            <div class="card-desc">점심 정식 식사와 난바 파크스 대형 오피셜 가챠샵 방문</div>
+            <div class="card-desc">출국 전 마지막 최고급 일식 점심과 초대형 가챠샵, 디저트 쇼핑</div>
             <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">스키야키 호쿠토</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba+Osaka" target="_blank">규카츠 모토무라</a></li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks+Osaka" target="_blank">반다이 오피셜 가챠샵 (난바 파크스 5층)</a> 방문</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" target="_blank">장어의 나카쇼</a> (히츠마부시 장어덮밥) 또는 <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba+Osaka" target="_blank">규카츠 모토무라</a></li>
+                <li><b>가샤폰 반다이 오피셜 숍 (난바 파크스 5층)</b> 대형 가챠샵 구경</li>
+                <li><b>[틈새 가챠]</b> KOKO 호텔 뒤편 <b>덴덴타운 가챠 샵</b> 거리 구경</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="map-btn" target="_blank">📍 스키야키 호쿠토 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks+Osaka" class="map-btn" target="_blank">📍 대형 가챠샵 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" class="map-btn" target="_blank">📍 장어의 나카쇼 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba+Osaka" class="map-btn" target="_blank">📍 규카츠 모토무라 지도</a>
             </div>
             <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
                 <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 4/디저트] <a href="https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">하브스 난바파크스점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">독보적인 밀크 크레이프 케이크 디저트 카페.</div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">얇은 크레이프 속 제철 과일과 생크림이 일품인 크레이프 케이크.</div>
             </div>
         </div>
 
-        <!-- 스시 -->
-        <div class="timeline-card cafe">
-            <div class="card-time">🕑 14:00 - 15:30</div>
-            <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" target="_blank">출국 전 마무리 스시 🗺️</a>
-                <span class="badge badge-accent">식사</span>
-            </div>
-            <div class="card-desc">공항으로 출발하기 전 든든하게 스시로 대단원 마무리</div>
-            <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" target="_blank">타치스시 마구로 잇테츠</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Kaminari+Sushi+Sennichimae+Osaka" target="_blank">카미나리 스시</a></li>
-                <li>식사 후 호텔로 돌아와 캐리어를 챙겨 난바역으로 이동</li>
-            </ul>
-            <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" class="map-btn" target="_blank">📍 마구로 잇테츠 지도</a>
-            </div>
-        </div>
-
-        <!-- 귀국 -->
+        <!-- 공항 출발 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕒 15:30 -</div>
+            <div class="card-time">🕒 16:30 -</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">라피트 탑승 & 공항 출국 🗺️</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">라피트 탑승 및 귀국 🗺️</a>
                 <span class="badge badge-secondary">이동</span>
             </div>
-            <div class="card-desc">난카이 라피트를 탑승해 간사이 국제공항으로 이동해 비행기 탑승</div>
+            <div class="card-desc">난바역에서 캐리어를 찾고 특급 라피트를 타고 공항으로 출발합니다. (19:45 서울행 비행기)</div>
         </div>
     </div>
 
-    <!-- Food Section Grid -->
-    <div class="food-section">
-        <h2 class="section-title">🍣 주요 희망 음식 추천 맛집</h2>
-        <div class="food-grid">
-            <div class="food-card">
-                <div class="food-tag">스키야키</div>
-                <div class="food-name">스키야키 호쿠토</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
-            <div class="food-card">
-                <div class="food-tag">야끼니꾸</div>
-                <div class="food-name">야키니쿠 리키마루</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
-            <div class="food-card">
-                <div class="food-tag">쿠시카츠</div>
-                <div class="food-name">야에카츠 (신세카이)</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
-            <div class="food-card">
-                <div class="food-tag">스시</div>
-                <div class="food-name">마구로 잇테츠</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
-            <div class="food-card">
-                <div class="food-tag">라멘</div>
-                <div class="food-name">잇푸도 난바점</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
-            <div class="food-card">
-                <div class="food-tag">우동</div>
-                <div class="food-name">츠루통탄 소에몬쵸</div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
-            </div>
+    <!-- Convenience Store Food Guide -->
+    <div class="cvs-section">
+        <h2 class="section-title">🏪 일본 편의점 필수 시식 리스트</h2>
+        
+        <div class="cvs-card">
+            <div class="cvs-title" style="color: #008000;">🏪 LAWSON (로손)</div>
+            <ul class="cvs-list">
+                <li>
+                    <span class="cvs-item-name">모찌롤 (Uchi Café 프리미엄 롤)</span>
+                    <div class="cvs-item-desc">쫀득한 모찌 식감의 빵에 부드럽고 달콤한 우유 생크림이 가득 찬 오사카 편의점 부동의 1위 디저트.</div>
+                </li>
+                <li>
+                    <span class="cvs-item-name">카라아게군</span>
+                    <div class="cvs-item-desc">따끈하게 보관된 닭튀김 한입 거리 컵 치킨 (매콤한 레드맛 또는 치즈맛 강력 추천).</div>
+                </li>
+            </ul>
         </div>
-    </div>
 
-    <!-- Quick Tips -->
-    <div class="quick-tips">
-        <h2 class="section-title">💡 여행 준비 & 이동 꿀팁</h2>
-        <div class="tip-card">
-            <div class="tip-item">
-                <div class="tip-title">🚃 난바 ↔ 오사카코 환승</div>
-                <div class="tip-desc">난바역 ➔ 혼마치역(미도스지선) ➔ 오사카코역(주오선) 환승이 가장 빠릅니다.</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-title">🎟️ 주유패스 혜택</div>
-                <div class="tip-desc">첫날 산타마리아 크루즈, 관람차, 뮤지엄, 오사카성 공원 등 1일 패스로 입장료를 모두 아낄 수 있습니다.</div>
-            </div>
-            <div class="tip-item">
-                <div class="tip-title">🥩 야키니쿠 예약</div>
-                <div class="tip-desc">토요일 저녁 리키마루 야키니쿠는 웨이팅이 길어 꼭 여행 전 예약을 해두시는 편이 편안합니다.</div>
-            </div>
+        <div class="cvs-card">
+            <div class="cvs-title" style="color: #FF0000;">🏪 Seven-Eleven (세븐일레븐)</div>
+            <ul class="cvs-list">
+                <li>
+                    <span class="cvs-item-name">타마고 산도 (계란 샌드위치)</span>
+                    <div class="cvs-item-desc">부드러운 식빵 사이에 달콤 짭조름하고 몽글몽글한 으깬 계란 마요가 가득 들어있어 아침 식사로 안성맞춤.</div>
+                </li>
+                <li>
+                    <span class="cvs-item-name">야끼소바 빵</span>
+                    <div class="cvs-item-desc">짭조름한 볶음우동 면을 부드러운 핫도그 번 빵에 채워 넣어 든든하게 한 끼 떼우기 좋은 정통 일식 빵.</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="cvs-card">
+            <div class="cvs-title" style="color: #00A3E0;">🏪 FamilyMart (패밀리마트)</div>
+            <ul class="cvs-list">
+                <li>
+                    <span class="cvs-item-name">파미치키 (FamiChiki)</span>
+                    <div class="cvs-item-desc">일본 편의점 치킨 중에서 가장 육즙이 많고 짭조름하여 맥주 안주로 독보적인 인기를 자랑하는 순살 치킨.</div>
+                </li>
+                <li>
+                    <span class="cvs-item-name">수플레 푸딩</span>
+                    <div class="cvs-item-desc">달콤하고 부드러운 커스터드 푸딩 위에 두툼하고 푹신한 수플레 치즈케이크가 얹어진 최강의 콤보 디저트.</div>
+                </li>
+            </ul>
         </div>
     </div>
 
