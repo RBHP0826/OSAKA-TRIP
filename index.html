@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇯🇵 오사카 3인 가족 여행 일정표</title>
+    <!-- Google Fonts: Noto Sans KR & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+            --primary: #FF4B72;
+            --primary-light: #FFEBF0;
+            --secondary: #4A90E2;
+            --secondary-light: #EEF5FC;
+            --accent: #FF9F00;
+            --accent-light: #FFF5E6;
+            --text-main: #2C3E50;
+            --text-muted: #7F8C8D;
+            --border-color: #E2E8F0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #FF4B72 0%, #FF85A2 100%);
+            color: white;
+            padding: 30px 24px 40px 24px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 20px rgba(255, 75, 114, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .header-meta {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-info {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .header-info p {
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Quick Info Box */
+        .info-box {
+            background-color: var(--card-bg);
+            margin: -25px 24px 20px 24px;
+            padding: 16px 20px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .info-item:not(:last-child) {
+            border-right: 1px solid var(--border-color);
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .info-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .info-link:hover {
+            color: var(--primary);
+        }
+
+        /* Day Selector Tab */
+        .day-tab-container {
+            display: flex;
+            padding: 0 24px;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .day-tab {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            border-radius: 15px;
+            background-color: var(--card-bg);
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .day-tab.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 6px 15px rgba(255, 75, 114, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Timeline Container */
+        .timeline {
+            padding: 0 24px;
+            position: relative;
+            display: none;
+        }
+
+        .timeline.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card styles */
+        .timeline-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-card.tour {
+            border-left-color: var(--secondary);
+        }
+        
+        .timeline-card.cafe {
+            border-left-color: var(--accent);
+        }
+
+        .card-time {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-title a {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-title a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .timeline-card.tour .card-title a:hover {
+            color: var(--secondary);
+        }
+
+        .card-desc {
+            font-size: 13.5px;
+            color: #576574;
+            margin-bottom: 12px;
+        }
+
+        /* Detail List */
+        .detail-list {
+            list-style: none;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 12px;
+        }
+
+        .detail-list li {
+            font-size: 12.5px;
+            color: #4f5f6f;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .detail-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-list li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .detail-list a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1.5px dashed var(--primary);
+            padding-bottom: 1px;
+            transition: var(--transition);
+        }
+
+        .detail-list a:hover {
+            color: var(--primary);
+            background-color: var(--primary-light);
+            border-bottom-style: solid;
+        }
+        
+        .timeline-card.tour .detail-list li::before {
+            color: var(--secondary);
+        }
+        
+        .timeline-card.tour .detail-list a {
+            border-bottom-color: var(--secondary);
+        }
+        .timeline-card.tour .detail-list a:hover {
+            color: var(--secondary);
+            background-color: var(--secondary-light);
+        }
+
+        .timeline-card.cafe .detail-list a {
+            border-bottom-color: var(--accent);
+        }
+        .timeline-card.cafe .detail-list a:hover {
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        /* Buttons & Actions */
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 1px solid #C8E6C9;
+        }
+
+        .map-btn:hover {
+            background-color: #C8E6C9;
+            transform: translateY(-1px);
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-primary {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .badge-secondary {
+            background-color: var(--secondary-light);
+            color: var(--secondary);
+        }
+
+        .badge-accent {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        /* Alert/Tip Box */
+        .tip-box {
+            background-color: #FFF9E6;
+            border: 1px solid #FFE499;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #B27B00;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        /* Food List Section */
+        .food-section {
+            padding: 0 24px;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 15px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .food-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .food-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .food-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .food-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .food-link {
+            font-size: 11px;
+            color: var(--secondary);
+            text-decoration: none;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+        }
+
+        .food-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Quick Tips */
+        .quick-tips {
+            padding: 0 24px 40px 24px;
+        }
+
+        .tip-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .tip-item {
+            margin-bottom: 14px;
+        }
+
+        .tip-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tip-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            padding-left: 20px;
+        }
+
+        /* Bottom Floating Bar for Mobile Quick Share */
+        .share-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 480px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .share-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(255, 75, 114, 0.2);
+        }
+
+        .share-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .share-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        /* Map Icon Style */
+        .map-icon {
+            display: inline-block;
+            font-size: 11px;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <span class="header-meta">Family Trip</span>
+        <h1>🇯🇵 오사카 2박 3일 여행</h1>
+        <div class="header-info">
+            <p>📅 2026.09.18 (금) ~ 2026.09.20 (일)</p>
+            <p>👥 인원: 오빠, 나, 엄마 (3명)</p>
+            <p>🏨 숙소: <a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank" style="color: white; font-weight: bold; text-decoration: underline;">KOKO 호텔 오사카 난바 🗺️</a></p>
+        </div>
+    </header>
+
+    <!-- Info Box -->
+    <div class="info-box">
+        <div class="info-item">
+            <div class="info-label">1일차 패스</div>
+            <div class="info-value">오사카 1일 패스</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">2일차 투어</div>
+            <div class="info-value">일일 버스 투어</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">승하차지</div>
+            <div class="info-value">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" target="_blank" class="info-link">📍 소에몬쵸 츠루통탄</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Selector -->
+    <div class="day-tab-container">
+        <button class="day-tab active" onclick="switchDay(1)">Day 1 (금)</button>
+        <button class="day-tab" onclick="switchDay(2)">Day 2 (토)</button>
+        <button class="day-tab" onclick="switchDay(3)">Day 3 (일)</button>
+    </div>
+
+    <!-- DAY 1 TIMELINE -->
+    <div id="day1" class="timeline active">
+        <!-- 짐보관 -->
+        <div class="timeline-card tour">
+            <div class="card-time">🕙 10:00 - 12:00</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">입국 & KOKO 호텔 짐 보관 🗺️</a>
+                <span class="badge badge-secondary">이동</span>
+            </div>
+            <div class="card-desc">간사이 국제공항에 도착하여 라피트를 타고 난바역에 내려 호텔에 캐리어를 위탁합니다.</div>
+            <ul class="detail-list">
+                <li>라피트는 한국에서 사전 예약된 모바일 티켓 활용</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">KOKO 호텔 오사카 난바</a> 프런트에 짐을 무료로 맡길 수 있습니다.</li>
+            </ul>
+        </div>
+
+        <!-- 덴포잔 -->
+        <div class="timeline-card">
+            <div class="card-time">🕛 12:00 - 15:00</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Ferris+Wheel" target="_blank">덴포잔 베이 에어리어 관광 🗺️</a>
+                <span class="badge badge-primary">관광 & 식사</span>
+            </div>
+            <div class="card-desc">오사카 1일 패스를 개시하여 크루즈, 관람차 등을 무료 탑승합니다. (장소명을 선택하면 지도가 열립니다)</div>
+            <ul class="detail-list">
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=34.6550175,135.432726" target="_blank">天ぷら えびちゃん (텐푸라 에비짱 정식)</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Ferris+Wheel" target="_blank">덴포잔 대관람차</a> & <a href="https://www.google.com/maps/search/?api=1&query=Santa+Maria+Cruise+Osaka" target="_blank">산타마리아 리버크루즈</a> 탑승</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=GLION+MUSEUM" target="_blank">지라이언 뮤지엄</a> 클래식 자동차 관람</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=34.6550175,135.432726" class="map-btn" target="_blank">📍 텐푸라 에비짱 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Ferris+Wheel" class="map-btn" target="_blank">📍 덴포잔 관람차 지도</a>
+            </div>
+            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
+                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 1] <a href="https://www.google.com/maps/search/?api=1&query=Cafe+1923+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">지라이언 카페 (Café 1923) 🗺️</a></div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">붉은 벽돌 감성 속 클래식 명차 뷰 카페.</div>
+            </div>
+        </div>
+
+        <!-- 오사카성 -->
+        <div class="timeline-card">
+            <div class="card-time">🕒 15:00 - 17:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">호텔 체크인 & 오사카성 🗺️</a>
+                <span class="badge badge-primary">관광</span>
+            </div>
+            <div class="card-desc">체크인 후 오사카성으로 이동하여 가벼운 산책을 진행합니다.</div>
+            <ul class="detail-list">
+                <li>호텔 체크인 후 15분간 재정비 및 휴식</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각</a>은 16:30 입장 마감이니 동선 서두르기</li>
+            </ul>
+            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
+                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 2] <a href="https://www.google.com/maps/search/?api=1&query=R+Baker+Osaka+Castle" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">R Baker 오사카성 공원점 🗺️</a></div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">숲속 정원에 둘러싸인 야외 테라스 베이커리 카페 (엄마 힐링 추천).</div>
+            </div>
+        </div>
+
+        <!-- 츠텐카쿠 -->
+        <div class="timeline-card">
+            <div class="card-time">Sensory 🕕 17:30 - 20:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku" target="_blank">신세카이 츠텐카쿠 & 쿠시카츠 🗺️</a>
+                <span class="badge badge-primary">관광 & 식사</span>
+            </div>
+            <div class="card-desc">레트로 오사카 감성이 살아있는 츠텐카쿠 야경 관람과 저녁 식사</div>
+            <ul class="detail-list">
+                <li>[틈새 가챠] <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku" target="_blank">츠텐카쿠</a> 인근 골목 로컬 가챠샵 투어</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank">야에카츠</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Oji+Osaka" target="_blank">쿠시카츠 오오지</a></li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="map-btn" target="_blank">📍 야에카츠 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku" class="map-btn" target="_blank">📍 츠텐카쿠 지도</a>
+            </div>
+        </div>
+
+        <!-- 야식 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕘 20:30 -</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Den+Den+Town" target="_blank">호텔 인근 복귀 및 이자카야 🗺️</a>
+                <span class="badge badge-accent">야식</span>
+            </div>
+            <div class="card-desc">KOKO 호텔 인근 덴덴타운 가챠샵 구경 및 야키토리 한잔</div>
+            <ul class="detail-list">
+                <li>KOKO 호텔 뒤편의 <a href="https://www.google.com/maps/search/?api=1&query=Den+Den+Town" target="_blank">덴덴타운</a> 가챠샵 투어</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=34.6682596,135.5039747" target="_blank">숯불구이 유지로</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Sasaya+Namba" target="_blank">사사야 센니치마에점</a></li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=34.6682596,135.5039747" class="map-btn" target="_blank">📍 숯불구이 유지로 지도</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 2 TIMELINE -->
+    <div id="day2" class="timeline">
+        <!-- 일일버스투어 -->
+        <div class="timeline-card tour">
+            <div class="card-time">🕗 08:00 - 19:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" target="_blank">일일 버스 투어 (교토/나라 등) 🗺️</a>
+                <span class="badge badge-secondary">투어</span>
+            </div>
+            <div class="card-desc">미팅 장소인 도톤보리 츠루통탄 앞으로 이동해 가이드 투어를 받습니다.</div>
+            <ul class="detail-list">
+                <li>호텔에서 미팅장소인 <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" target="_blank">소에몬쵸 츠루통탄</a>까지 도보 5~10분 소요</li>
+                <li>하루 일정 중 중식은 관광지 자유식으로 진행</li>
+            </ul>
+        </div>
+
+        <!-- 저녁식사 -->
+        <div class="timeline-card">
+            <div class="card-time">🕖 19:30 -</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" target="_blank">버스 하차 후 저녁 식사 🗺️</a>
+                <span class="badge badge-primary">식사</span>
+            </div>
+            <div class="card-desc">피로한 몸을 달래줄 닛폰바시 인근 최고의 만찬 코스</div>
+            <ul class="detail-list">
+                <li>[추천 A] <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori" target="_blank">야키니쿠 리키마루 도톤보리점</a> *주말 예약 필수</li>
+                <li>[추천 B] <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" target="_blank">츠루통탄 소에몬쵸점</a> (세숫대야 우동)</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori" class="map-btn" target="_blank">📍 리키마루 도톤보리점</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" class="map-btn" target="_blank">📍 츠루통탄 지도</a>
+            </div>
+            <div class="tip-box">
+                ℹ️ 토요일 저녁 도톤보리는 웨이팅이 극심하므로 야키니쿠는 미리 예약하고 가시는 편이 안전합니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 3 TIMELINE -->
+    <div id="day3" class="timeline">
+        <!-- 오전 -->
+        <div class="timeline-card">
+            <div class="card-time">⁹🕘 09:30 - 11:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street" target="_blank">체크아웃 & 라멘 & 그릇쇼핑 🗺️</a>
+                <span class="badge badge-primary">쇼핑 & 식사</span>
+            </div>
+            <div class="card-desc">어머니 취향 저격 식기/그릇 쇼핑 및 아침 해장 라멘</div>
+            <ul class="detail-list">
+                <li>체크아웃 후 캐리어를 호텔 또는 난바역에 보관</li>
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba" target="_blank">잇푸도 난바점</a> (돈코츠 라멘 아침 식사)</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street" target="_blank">도구야스지 그릇거리</a>: 일본 밥그릇, 접시, 맥주잔, 술잔 쇼핑</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba" class="map-btn" target="_blank">📍 잇푸도 난바점 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street" class="map-btn" target="_blank">📍 그릇거리 지도</a>
+            </div>
+            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
+                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 3] <a href="https://www.google.com/maps/search/?api=1&query=Marufuku+Coffee+Sennichimae" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">마루후쿠 커피점 센니치마에 본점 🗺️</a></div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 융드립 커피와 빈티지 핫케이크.</div>
+            </div>
+        </div>
+
+        <!-- 스키야키 & 가챠 -->
+        <div class="timeline-card">
+            <div class="card-time">🕛 11:30 - 14:00</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto" target="_blank">스키야키 점심 & 대형 가챠샵 🗺️</a>
+                <span class="badge badge-primary">쇼핑 & 식사</span>
+            </div>
+            <div class="card-desc">점심 정식 식사와 난바 파크스 대형 오피셜 가챠샵 방문</div>
+            <ul class="detail-list">
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto" target="_blank">스키야키 호쿠토</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba" target="_blank">규카츠 모토무라</a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks" target="_blank">반다이 오피셜 가챠샵 (난바 파크스 5층)</a> 방문</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto" class="map-btn" target="_blank">📍 스키야키 호쿠토 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks" class="map-btn" target="_blank">📍 대형 가챠샵 지도</a>
+            </div>
+            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
+                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 4/디저트] <a href="https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">하브스 난바파크스점 🗺️</a></div>
+                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">독보적인 밀크 크레이프 케이크 디저트 카페.</div>
+            </div>
+        </div>
+
+        <!-- 스시 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕑 14:00 - 15:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu" target="_blank">출국 전 마무리 스시 🗺️</a>
+                <span class="badge badge-accent">식사</span>
+            </div>
+            <div class="card-desc">공항으로 출발하기 전 든든하게 스시로 대단원 마무리</div>
+            <ul class="detail-list">
+                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu" target="_blank">타치스시 마구로 잇테츠</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Kaminari+Sushi" target="_blank">카미나리 스시</a></li>
+                <li>식사 후 호텔로 돌아와 캐리어를 챙겨 난바역으로 이동</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu" class="map-btn" target="_blank">📍 마구로 잇테츠 지도</a>
+            </div>
+        </div>
+
+        <!-- 귀국 -->
+        <div class="timeline-card tour">
+            <div class="card-time">🕒 15:30 -</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">라피트 탑승 & 공항 출국 🗺️</a>
+                <span class="badge badge-secondary">이동</span>
+            </div>
+            <div class="card-desc">난카이 라피트를 탑승해 간사이 국제공항으로 이동해 비행기 탑승</div>
+        </div>
+    </div>
+
+    <!-- Food Section Grid -->
+    <div class="food-section">
+        <h2 class="section-title">🍣 주요 희망 음식 추천 맛집</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-tag">스키야키</div>
+                <div class="food-name">스키야키 호쿠토</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+            <div class="food-card">
+                <div class="food-tag">야끼니꾸</div>
+                <div class="food-name">야키니쿠 리키마루</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+            <div class="food-card">
+                <div class="food-tag">쿠시카츠</div>
+                <div class="food-name">야에카츠 (신세카이)</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+            <div class="food-card">
+                <div class="food-tag">스시</div>
+                <div class="food-name">마구로 잇테츠</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+            <div class="food-card">
+                <div class="food-tag">라멘</div>
+                <div class="food-name">잇푸도 난바점</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+            <div class="food-card">
+                <div class="food-tag">우동</div>
+                <div class="food-name">츠루통탄 소에몬쵸</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho" class="food-link" target="_blank">구글 지도 ➔</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Tips -->
+    <div class="quick-tips">
+        <h2 class="section-title">💡 여행 준비 & 이동 꿀팁</h2>
+        <div class="tip-card">
+            <div class="tip-item">
+                <div class="tip-title">🚃 난바 ↔ 오사카코 환승</div>
+                <div class="tip-desc">난바역 ➔ 혼마치역(미도스지선) ➔ 오사카코역(주오선) 환승이 가장 빠릅니다.</div>
+            </div>
+            <div class="tip-item">
+                <div class="tip-title">🎟️ 주유패스 혜택</div>
+                <div class="tip-desc">첫날 산타마리아 크루즈, 관람차, 뮤지엄, 오사카성 공원 등 1일 패스로 입장료를 모두 아낄 수 있습니다.</div>
+            </div>
+            <div class="tip-item">
+                <div class="tip-title">🥩 야키니쿠 예약</div>
+                <div class="tip-desc">토요일 저녁 리키마루 야키니쿠는 웨이팅이 길어 꼭 여행 전 예약을 해두시는 편이 편안합니다.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Share Bar -->
+    <div class="share-bar">
+        <span class="share-text">오사카 3인 가족 여행 일정표</span>
+        <button class="share-btn" onclick="copyURL()">
+            🔗 링크 복사
+        </button>
+    </div>
+</div>
+
+<script>
+    function switchDay(day) {
+        // Hide all timelines
+        const timelines = document.querySelectorAll('.timeline');
+        timelines.forEach(t => t.classList.remove('active'));
+
+        // Deactivate all tabs
+        const tabs = document.querySelectorAll('.day-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        // Activate selected
+        document.getElementById('day' + day).classList.add('active');
+        tabs[day - 1].classList.add('active');
+        
+        // Scroll to top of timeline
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    function copyURL() {
+        navigator.clipboard.writeText(window.location.href);
+        alert('일정표 주소가 복사되었습니다! 가족들에게 공유하세요. 😉');
+    }
+</script>
+</body>
+</html>
