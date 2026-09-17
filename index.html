@@ -646,6 +646,256 @@
             vertical-align: middle;
             margin-left: 2px;
         }
+    
+        /* ===================================
+           Docent Audio Guide Styles
+           =================================== */
+        .docent-box {
+            margin-top: 14px;
+            background: linear-gradient(135deg, #FAF8FF 0%, #F1EDFD 100%);
+            border: 1px solid #D8CEF8;
+            border-radius: 16px;
+            padding: 13px 15px;
+            position: relative;
+            box-shadow: 0 4px 14px rgba(108, 92, 231, 0.07);
+            transition: var(--transition);
+        }
+
+        .docent-box.playing {
+            border-color: #6C5CE7;
+            background: linear-gradient(135deg, #F3EFFF 0%, #E8E0FD 100%);
+            box-shadow: 0 6px 18px rgba(108, 92, 231, 0.15);
+        }
+
+        .docent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px;
+        }
+
+        .docent-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #6C5CE7;
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .docent-equalizer {
+            display: none;
+            align-items: flex-end;
+            gap: 3px;
+            height: 14px;
+        }
+
+        .docent-box.playing .docent-equalizer {
+            display: inline-flex;
+        }
+
+        .eq-bar {
+            width: 3px;
+            background-color: #6C5CE7;
+            border-radius: 2px;
+            animation: soundWave 0.8s ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(1) { height: 5px; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 9px; animation-delay: 0.2s; }
+        .eq-bar:nth-child(4) { height: 6px; animation-delay: 0.4s; }
+
+        @keyframes soundWave {
+            0% { height: 3px; }
+            100% { height: 14px; }
+        }
+
+        .docent-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #4834D4;
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+
+        .docent-desc-preview {
+            font-size: 11px;
+            color: #574B90;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .docent-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .docent-btn {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition);
+        }
+
+        .docent-play-btn {
+            background: #6C5CE7;
+            color: white;
+            box-shadow: 0 3px 8px rgba(108, 92, 231, 0.25);
+        }
+
+        .docent-play-btn:hover {
+            background: #5A49DF;
+            transform: translateY(-1px);
+        }
+
+        .docent-stop-btn {
+            background: #EAE6FB;
+            color: #6C5CE7;
+        }
+
+        .docent-stop-btn:hover {
+            background: #DDD5FA;
+        }
+
+        .docent-script-btn {
+            background: transparent;
+            border: 1px solid #D0C6F5;
+            color: #6C5CE7;
+            font-size: 11px;
+            padding: 5px 9px;
+            border-radius: 8px;
+            margin-left: auto;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .docent-script-btn:hover {
+            background: rgba(108, 92, 231, 0.08);
+        }
+
+        .docent-script {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #D0C6F5;
+            font-size: 11.8px;
+            color: #433967;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+
+        .docent-box.show-script .docent-script {
+            display: block;
+        }
+
+        /* Floating Docent Mini Player */
+        .floating-player {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 32px);
+            max-width: 440px;
+            background: rgba(28, 22, 54, 0.95);
+            backdrop-filter: blur(12px);
+            color: white;
+            border-radius: 18px;
+            padding: 9px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(22, 14, 48, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 99;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        .floating-player.active {
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .floating-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            animation: pulseIcon 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .floating-text {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .floating-title {
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #F8F7FF;
+        }
+
+        .floating-sub {
+            font-size: 10px;
+            color: #A29BFE;
+            font-weight: 600;
+        }
+
+        .floating-btns {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .floating-ctrl-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .floating-ctrl-btn:hover {
+            background: #6C5CE7;
+        }
     </style>
 </head>
 <body>
@@ -665,18 +915,16 @@
     <!-- Info Box -->
     <div class="info-box">
         <div class="info-item">
-            <div class="info-label">1일차 패스</div>
-            <div class="info-value">오사카 1일 패스</div>
+            <div class="info-label">1일차 예약</div>
+            <div class="info-value">복어 (16:30)</div>
         </div>
         <div class="info-item">
-            <div class="info-label">2일차 투어</div>
-            <div class="info-value"><a href="https://experiences.myrealtrip.com/products/3153601" target="_blank" style="color: var(--secondary); text-decoration: underline; border-bottom: 1px dashed var(--secondary);">교토 버스 투어</a></div>
+            <div class="info-label">2일차 투어/예약</div>
+            <div class="info-value">나라·고베 투어(07:40) / 스키야키(19:30)</div>
         </div>
         <div class="info-item">
-            <div class="info-label">승하차지</div>
-            <div class="info-value">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank" class="info-link">📍 소에몬쵸 츠루통탄</a>
-            </div>
+            <div class="info-label">3일차 예약</div>
+            <div class="info-value">장어덮밥 조식</div>
         </div>
     </div>
 
@@ -691,214 +939,604 @@
     <div id="day1" class="timeline active">
         <!-- 공항 도착 및 551호라이 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕘 09:00 - 10:30</div>
+            <div class="card-time">🕘 오전 (09:00 - 11:30)</div>
             <div class="card-title">
                 <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">간사이공항 도착 & 551호라이 🗺️</a>
-                <span class="badge badge-secondary">도착</span>
+                <span class="badge badge-secondary">도착 & 이동</span>
             </div>
-            <div class="card-desc">아침 비행기로 오사카 공항에 내려 유명한 호라이만두를 구매해 라피트로 이동합니다.</div>
+            <div class="card-desc">아침 비행기로 오사카 공항 도착 후 호라이만두를 포장하여 라피트로 난바 시내로 진입합니다.</div>
             <ul class="detail-list">
-                <li>공항 내 <a href="https://www.google.com/maps/search/?api=1&query=551+Horai+Kansai+Airport" target="_blank">551 호라이 만두</a>에서 부타만(왕만두) 포장</li>
-                <li>특급 라피트 열차 안에서 이동하며 가볍게 시식 (열차 내 조용히 취식)</li>
+                <li>공항 내 <a href="https://www.google.com/maps/search/?api=1&query=551+Horai+Kansai+Airport" target="_blank">551 호라이 만두</a>에서 따끈한 부타만(왕만두) 픽업</li>
+                <li>특급 라피트 열차 탑승 ➔ 이동 중 차내에서 조용히 만두 시식 요기</li>
             </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=551+Horai+Kansai+Airport" class="map-btn" target="_blank">📍 551 호라이 공항점 지도</a>
+            </div>
         </div>
 
-        <!-- 크루즈 예매 및 호텔 짐 보관 -->
+        <!-- 점심 스시로 -->
+        <div class="timeline-card">
+            <div class="card-time">🕛 11:30 - 13:00</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Namba+Osaka" target="_blank">스시로 난바 회전초밥 🗺️</a>
+                <span class="badge badge-primary">점심 식사</span>
+            </div>
+            <div class="card-desc">시내 진입 후 신선함과 가성비를 모두 갖춘 회전초밥으로 부담 없이 든든한 첫 식사를 합니다.</div>
+            <ul class="detail-list">
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Namba+Osaka" target="_blank">스시로 난바점 / 도톤보리점</a>에서 취향대로 터치패드 주문</li>
+                <li>참치, 연어, 새우, 계란초밥 등 온 가족이 함께 즐기는 일본 인기 회전초밥</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Namba+Osaka" class="map-btn" target="_blank">📍 스시로 난바 지도</a>
+            </div>
+        </div>
+
+        <!-- 오사카성 및 미라이자 카페 -->
+        <div class="timeline-card">
+            <div class="card-time">🕐 13:00 - 15:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각 & 미라이자 카페 🗺️</a>
+                <span class="badge badge-primary">관광 & 카페</span>
+            </div>
+            <div class="card-desc">지하철로 이동하여 웅장한 오사카성 천수각 주변을 산책하고, 공원 타코야키와 감성 카페 휴식을 즐깁니다.</div>
+            <ul class="detail-list">
+                <li>지하철로 오사카성 이동 (다니마치욘초메역 또는 모리노미야역 하차)</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각</a> 주변 산책 및 공원 타코야키 간식</li>
+                <li>오사카성 앞 복합문화공간 <a href="https://www.google.com/maps/search/?api=1&query=MIRAIZA+OSAKA-JO" target="_blank">미라이자 오사카성 (MIRAIZA)</a> 내 카페에서 커피와 휴식 병행</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" class="map-btn" target="_blank">📍 오사카성 천수각 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=MIRAIZA+OSAKA-JO" class="map-btn" target="_blank">📍 미라이자 오사카성 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-osaka-castle">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 1분 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🏯 도요토미 히데요시의 황금 성과 108톤 거석의 비밀</div>
+                <div class="docent-desc-preview">천하를 호령했던 히데요시의 황금 성채와 거대한 성벽 바위, 그리고 옛 육군 사령부 미라이자의 역사 이야기입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-osaka-castle')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-osaka-castle')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        오사카성은 1583년 도요토미 히데요시가 축성을 시작해 지은 명성입니다. 지붕 기와와 벽면 곳곳을 황금으로 장식해 화려함을 자랑했죠. 천수각 앞 사쿠라몬 성문으로 들어서면 성 안에서 가장 거대한 108톤짜리 바위 '다코이시'를 만날 수 있습니다. 흔히 히데요시의 돌로 알기 쉽지만, 실제로는 히데요시 사후 도쿠가와 막부가 오사카성을 전면 재건할 때 오카야마 번주가 충성을 증명하고자 세토내해에서 배로 실어 나른 역사적 거석입니다. 표면 좌측 하단에 문어 모양의 얼룩이 있어 문어 바위, 즉 '다코이시'라는 별칭이 붙었죠. 오늘날의 천수각은 1931년 오사카 시민들의 자발적인 성금으로 복원된 건물로, 내부에 엘리베이터가 있어 편하게 8층 전망대까지 올라갈 수 있습니다. 천수각 바로 앞의 미라이자 건물은 1931년 옛 육군 제4사단 사령부로 지어진 고풍스러운 서양식 건축물로, 지금은 카페와 기념품점으로 탈바꿈했습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 호텔 체크인 및 휴식 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕚 10:30 - 12:00</div>
+            <div class="card-time">🕒 15:30 - 16:15</div>
             <div class="card-title">
-                크루즈 매표 & KOKO 호텔 짐 보관 🗺️
-                <span class="badge badge-secondary">이동</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">KOKO 호텔 난바 체크인 & 휴식 🗺️</a>
+                <span class="badge badge-secondary">체크인</span>
             </div>
-            <div class="card-desc">라피트 하차 후 숙소로 이동하는 동선에서 크루즈 매표소를 들러 저녁 크루즈를 예매합니다.</div>
+            <div class="card-desc">호텔에 체크인하여 객실에 짐을 풀고, 이른 저녁 일정 전 잠시 휴식하며 재정비합니다.</div>
             <ul class="detail-list">
-                <li>도톤보리 강가 돈키호테 앞 매표소에서 저녁에 탈 <a href="https://www.google.com/maps/search/?api=1&query=Tombori+River+Cruise" target="_blank">톤보리 리버크루즈</a>를 주유패스 혜택으로 미리 예매</li>
-                <li>이후 KOKO 호텔 난바로 이동해 캐리어를 맡김</li>
-            </ul>
-        </div>
-
-        <!-- 덴포잔 관광 및 점심 -->
-        <div class="timeline-card">
-            <div class="card-time">🕛 12:00 - 15:00</div>
-            <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tempozan+Giant+Ferris+Wheel+Osaka" target="_blank">덴포잔 베이 에어리어 관광 🗺️</a>
-                <span class="badge badge-primary">관광 & 식사</span>
-            </div>
-            <div class="card-desc">하버빌리지/마켓플레이스 내 구글평점 4.0 이상 찐 맛집에서 점심 식사를 진행합니다. (간코스시는 평점 3.4로 제외)</div>
-            <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Hokkyokusei+Tempozan+Osaka" target="_blank">북극성 오므라이스 덴포잔점 (구글 4.0)</a>: 1922년 창업 오사카 오므라이스 원조. 촉촉하고 부드러운 맛</li>
-                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka" target="_blank">아이즈야 덴포잔점 (구글 4.0)</a>: 타코야끼의 시초! 소스 없이 육수 맛으로 먹는 담백하고 고소한 원조 타코야끼</li>
-                <li>[식사 대체안] <a href="https://www.google.com/maps/search/?api=1&query=Tsuruhashi+Fugetsu+Tempozan+Osaka" target="_blank">츠루하시 후게츠 덴포잔점 (구글 4.0)</a>: 아삭한 식감의 오코노미야끼 전문점</li>
-                <li><b>덴포잔 대관람차</b>, <b>산타마리아 리버크루즈</b>, <b>지라이언 뮤지엄</b> 차례로 관람</li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" target="_blank">KOKO 호텔 오사카 난바</a> 체크인 및 짐 보관</li>
+                <li>16:30 복어 요리 예약 시간 전 가벼운 휴식</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Hokkyokusei+Tempozan+Osaka" class="map-btn" target="_blank">📍 북극성 오므라이스 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Aizuya+Tempozan+Osaka" class="map-btn" target="_blank">📍 아이즈야 타코야끼 지도</a>
-            </div>
-            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
-                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 1] <a href="https://www.google.com/maps/search/?api=1&query=Cafe+1923+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">지라이언 카페 (Café 1923) 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">붉은 벽돌 감성 속 클래식 명차 뷰 카페.</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=KOKO+HOTEL+Osaka+Namba" class="map-btn" target="_blank">📍 KOKO 호텔 난바 지도</a>
             </div>
         </div>
 
-        <!-- 호텔 체크인 및 오사카성 -->
-        <div class="timeline-card">
-            <div class="card-time">🕒 15:00 - 17:30</div>
-            <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">호텔 체크인 & 오사카성 관광 🗺️</a>
-                <span class="badge badge-primary">관광</span>
-            </div>
-            <div class="card-desc">호텔에 체크인하여 재정비를 마친 뒤, 오사카성 공원으로 이동합니다.</div>
-            <ul class="detail-list">
-                <li>호텔 체크인 후 잠시 휴식</li>
-                <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle" target="_blank">오사카성 천수각</a> 내부 구경 및 공원 산책</li>
-                <li>* 시간 여유가 있을 시 <a href="https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building+Kuchu+Teien+Observatory" target="_blank">우메다 공중정원</a> 야경 관람 선택 가능</li>
-            </ul>
-            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
-                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 2] <a href="https://www.google.com/maps/search/?api=1&query=R+Baker+Osaka+Castle+Park" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">R Baker 오사카성 공원점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">숲속 정원에 둘러싸인 야외 테라스 베이커리 카페.</div>
-            </div>
-        </div>
-
-        <!-- 츠텐카쿠 및 2일차 아침 포장 -->
-        <div class="timeline-card">
-            <div class="card-time">🕕 17:30 - 19:30</div>
-            <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">츠텐카쿠 & 오니기리 포장 🗺️</a>
-                <span class="badge badge-primary">쇼핑 & 시식</span>
-            </div>
-            <div class="card-desc">신세카이 츠텐카쿠 야경을 보며 간단히 꼬치를 시식하고 다음날 아침용 주먹밥을 포장합니다.</div>
-            <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank">야에카츠</a> 등에서 원조 쿠시카츠 가볍게 시식</li>
-                <li>[포장] <a href="https://www.google.com/maps/search/?api=1&query=Onigiri+Gorichan+Ebisu+Yokocho+Osaka" target="_blank">오니기리 고리짱 에비스요코초점</a>에서 큼직한 주먹밥 포장 (2일차 버스 안 또는 아침 식사용)</li>
-            </ul>
-            <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Onigiri+Gorichan+Ebisu+Yokocho+Osaka" class="map-btn" target="_blank">📍 오니기리 고리짱 지도</a>
-            </div>
-        </div>
-
-        <!-- 저녁 스키야키 및 2차 이자카야 -->
+        <!-- 이른 저녁 복어 요리 (후구쿠지라) -->
         <div class="timeline-card cafe">
-            <div class="card-time">🕖 19:30 -</div>
+            <div class="card-time">🕟 16:30 - 18:00 ⭐ [사전 예약]</div>
             <div class="card-title">
-                스키야키 만찬 & 이자카야 🗺️
-                <span class="badge badge-accent">식사 & 야식</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=ふぐくじら+Osaka" target="_blank">후구쿠지라 (ふぐくじら) 복어 코스 🗺️</a>
+                <span class="badge badge-accent">사전 예약 만찬</span>
             </div>
-            <div class="card-desc">호텔 근처로 돌아와 고급 스키야키로 든든한 본저녁식사를 합니다.</div>
+            <div class="card-desc">16:30 사전 예약 완료! 오사카 명물 최고급 복어 코스 요리를 어머니와 함께 만끽합니다.</div>
             <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">스키야키 호쿠토</a>에서 간장 베이스 고기와 계란물 만찬</li>
-                <li>[2차 이자카야] KOKO 호텔 근처 <a href="https://www.google.com/maps/search/?api=1&query=炭焼きゆうじろう+Sennichimae+Osaka" target="_blank">숯불구이 유지로</a>에서 야키토리와 사케</li>
-                <li>[편의점] 복귀 길에 편의점에 들러 야식 및 내일 아침 음료수 구매</li>
+                <li>[사전 예약 16:30] <a href="https://www.google.com/maps/search/?api=1&query=ふぐくじら+Osaka" target="_blank">후구쿠지라 (ふぐくじら)</a> 복어 전문점</li>
+                <li>쫄깃한 복어 사시미(텟사), 겉바속촉 복어 튀김(가라아게), 담백하고 시원한 복지리 냄비(텟치리) 코스 만찬</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="map-btn" target="_blank">📍 스키야키 호쿠토 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=ふぐくじら+Osaka" class="map-btn" target="_blank">📍 후구쿠지라 복어요리 지도</a>
+            </div>
+        </div>
+
+        <!-- 신세카이 & 츠텐카쿠 야경 & 쿠시카츠 -->
+        <div class="timeline-card">
+            <div class="card-time">🕕 18:00 - 20:00</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">신세카이 거리 & 츠텐카쿠 & 쿠시카츠 🗺️</a>
+                <span class="badge badge-primary">야경 & 시식</span>
+            </div>
+            <div class="card-desc">레트로한 네온사인이 화려한 신세카이 상점가를 걷고, 츠텐카쿠 야경과 갓 튀긴 쿠시카츠를 맛봅니다.</div>
+            <ul class="detail-list">
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" target="_blank">츠텐카쿠</a> 타워 전망 및 레트로 골목 야경 감상</li>
+                <li>[쿠시카츠] <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Shinsekai+Osaka" target="_blank">쿠시카츠 다루마 신세카이 총본점</a> 또는 <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" target="_blank">야에카츠</a>에서 바삭한 튀김꼬치 즐기기</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsutenkaku+Osaka" class="map-btn" target="_blank">📍 츠텐카쿠 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kushikatsu+Daruma+Shinsekai+Osaka" class="map-btn" target="_blank">📍 쿠시카츠 다루마 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Yaekatsu+Osaka" class="map-btn" target="_blank">📍 야에카츠 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-shinsekai">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🗼 1912년의 미래 도시 '신세계'와 행운의 신 빌리켄</div>
+                <div class="docent-desc-preview">파리 에펠탑과 뉴욕을 꿈꿨던 레트로 거리 신세카이와 쿠시카츠의 원조 문화 이야기입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-shinsekai')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-shinsekai')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        신세카이는 한자로 '신세계'라는 뜻으로, 1912년 당시 파리의 에펠탑과 개선문, 그리고 뉴욕 코니아일랜드를 모델로 만든 최첨단 미래형 유원지였습니다. 중심에 우뚝 솟은 츠텐카쿠는 '하늘로 통하는 높은 건물'이라는 뜻을 품고 있죠. 츠텐카쿠 전망대에는 뾰족한 머리에 익살스러운 미소를 짓고 있는 행운의 신 '빌리켄'이 모셔져 있습니다. 두 다리를 쭉 뻗은 빌리켄의 발바닥을 웃으면서 간지럽히면 소원이 이루어진다는 재미있는 전설이 있으니 꼭 한번 발바닥을 만져보세요! 또한 신세카이는 갓 튀긴 튀김꼬치 '쿠시카츠'의 발상지인데요, 모든 손님이 함께 쓰는 양배추 간장 통에는 위생을 위해 '소스는 딱 한 번만 찍기'라는 엄격한 규칙이 있답니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 밤 도톤보리 크루즈 & 로바타야키 미즈카케차야 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕗 20:00 -</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tombori+River+Cruise" target="_blank">톤보리 리버크루즈 & 로바타야키 미즈카케차야 🗺️</a>
+                <span class="badge badge-accent">야경 & 심야 2차</span>
+            </div>
+            <div class="card-desc">도톤보리 운하 야경 크루즈를 탑승하고, 호젠지요코초 앞 명물 전통 화로구이 선술집에서 2차를 즐깁니다.</div>
+            <ul class="detail-list">
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Tombori+River+Cruise" target="_blank">톤보리 리버크루즈</a> 탑승 (글리코상 앞 인증샷 & 야경 감상)</li>
+                <li>[2차 이자카야] <a href="https://www.google.com/maps/search/?api=1&query=Robatayaki+Mizukakechaya+Osaka" target="_blank">로바타야키 미즈카케차야 (炉ばた焼 水かけ茶屋)</a>: 거대한 주걱으로 즉석 화로구이를 건네주는 이색 감성 주점</li>
+                <li>[편의점] 복귀 길에 편의점 야식(모찌뿌요, 컵라면, 맥주 등) 구매 후 호텔 복귀</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tombori+River+Cruise" class="map-btn" target="_blank">📍 톤보리 리버크루즈 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Robatayaki+Mizukakechaya+Osaka" class="map-btn" target="_blank">📍 로바타야키 미즈카케차야 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-dotonbori">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 1분 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🏮 400년 운하 도톤보리와 이끼 낀 소원 성취 부동명왕</div>
+                <div class="docent-desc-preview">오사카 상인들의 젖줄이었던 도톤보리 운하와 호젠지 골목의 소원 성취 비밀입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-dotonbori')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-dotonbori')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        도톤보리는 1612년 야스이 도톤이라는 상인이 사재를 털어 오사카의 물류와 상업을 위해 판 인공 운하입니다. 에도 시대에는 운하 남쪽에 가부키와 인형극 극장들이 모여들며 일본 최대의 번화가로 성장했죠. 도톤보리의 상징인 달리는 글리코맨 간판은 1935년 에자키 글리코 제과가 캐러멜 한 알에 300미터를 뛸 수 있는 에너지가 들어있다는 뜻으로 설치한 이후 오사카의 랜드마크가 되었습니다. 화려한 도톤보리 골목 안쪽으로 살짝 들어서면 고즈넉한 돌바닥 골목 호젠지요코초가 나타납니다. 이곳 호젠지 사원에는 초록빛 이끼로 온몸이 뒤덮인 '미즈카케후도' 부동명왕상이 있는데요, 바가지로 시원하게 물을 끼얹으며 간절히 기도하면 어떤 소원이든 이루어준다고 전해집니다.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- DAY 2 TIMELINE -->
     <div id="day2" class="timeline">
-        <!-- 투어 출발 전 아침 식사 -->
-        <div class="timeline-card">
-            <div class="card-time">🕖 07:00 - 08:00</div>
-            <div class="card-title">
-                숙소 아침식사 & 투어 집결
-                <span class="badge badge-primary">아침 식사</span>
-            </div>
-            <div class="card-desc">어제 포장해 둔 오니기리 고리짱 주먹밥과 편의점 식품으로 든든한 아침을 먹고 출발합니다.</div>
-        </div>
-
-        <!-- 일일버스투어 -->
+        <!-- 투어 집결 및 출발 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕗 08:00 - 19:30</div>
+            <div class="card-time">🕖 07:40 미팅 / 07:50 출발</div>
             <div class="card-title">
-                <a href="https://experiences.myrealtrip.com/products/3153601" target="_blank">교토 일일 버스 투어 진행 🗺️</a>
-                <span class="badge badge-secondary">투어</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 앞 집결 & 투어 출발 🗺️</a>
+                <span class="badge badge-secondary">미팅 & 출발</span>
             </div>
-            <div class="card-desc">소에몬쵸 츠루통탄 앞에서 가이드 버스 투어를 탑승해 교토를 관광합니다.</div>
+            <div class="card-desc">숙소(KOKO 호텔)에서 도보 5~10분 거리! 츠루통탄 소에몬초점 앞에서 빨간 피켓의 '라쿠투어' 가이드 미팅 후 버스에 탑승합니다.</div>
             <ul class="detail-list">
-                <li>KOKO 호텔에서 도보 5~10분 거리에 집결지 위치</li>
-                <li>투어 코스: 아라시야마 ➔ 금각사 ➔ 청수사 ➔ 여우신사</li>
-            </ul>
-        </div>
-
-        <!-- 저녁식사 야키니쿠 및 2차 -->
-        <div class="timeline-card">
-            <div class="card-time">🕖 19:30 -</div>
-            <div class="card-title">
-                야키니쿠 무한리필 & 이자카야 🗺️
-                <span class="badge badge-primary">식사 & 야식</span>
-            </div>
-            <div class="card-desc">투어를 마친 후 하차지 근처에서 화려한 야키니쿠 만찬을 진행하며, 틈새 타코야끼 포장을 곁들입니다.</div>
-            <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" target="_blank">야키니쿠 리키마루 도톤보리점</a> (무한리필 고기 구이)</li>
-                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka" target="_blank">타코야끼 쿠쿠루 본점 (구글 4.0)</a>: 입에서 사르르 녹아내리는 식감과 커다란 문어 비주얼의 도톤보리 대표 타코야끼</li>
-                <li>[2차 이자카야] 도톤보리 골목의 분위기 좋은 이자카야</li>
-                <li>[편의점] 밤에 숙소에서 먹을 컵라면, 맥주 등 편의점 야식 구매</li>
+                <li><b>미팅 장소</b>: 닛폰바시역 2번 출구 도보 250m <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 소에몬초점 앞</a></li>
+                <li><b>시간</b>: 07:40 미팅 / 07:50 정시 출발 (시간 엄수 필수!)</li>
+                <li><b>가이드</b>: '라쿠투어' 빨간 피켓을 든 가이드 확인 후 탑승</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Yakiniku+Rikimaru+Dotonbori+Osaka" class="map-btn" target="_blank">📍 리키마루 도톤보리 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Takoya+Dotonbori+Kukuru+Main+Store+Osaka" class="map-btn" target="_blank">📍 쿠쿠루 타코야끼 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" class="map-btn" target="_blank">📍 츠루통탄 소에몬초점 지도</a>
             </div>
+        </div>
+
+        <!-- 코스 1: 나라 사슴공원 & 동대사 -->
+        <div class="timeline-card">
+            <div class="card-time">🕘 09:00 - 10:30 (1시간 30분)</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Nara+Park" target="_blank">나라 사슴공원 & 동대사 (도다이지) 🗺️</a>
+                <span class="badge badge-primary">사슴 & 랜드마크</span>
+            </div>
+            <div class="card-desc">공원을 자유롭게 거니는 귀여운 사슴들과 교감하고, 세계 최대 목조건축물 동대사의 압도적인 대불을 관람합니다.</div>
+            <ul class="detail-list">
+                <li>🦌 <b>나라 사슴공원</b>: 사슴들에게 시카센베(사슴 과자)를 주며 가까이서 교감하는 특별한 시간</li>
+                <li>🏯 <b>동대사 (도다이지)</b>: 나라의 상징이자 웅장한 대불(거대 불상) 관람 (*입장료 성인 800엔/소인 400엔 불포함)</li>
+                <li>🍡 <b>[명물 간식]</b> <a href="https://www.google.com/maps/search/?api=1&query=Nakatanidou+Nara" target="_blank">나카타니도 (中谷堂)</a>: 눈앞에서 펼쳐지는 초고속 떡메치기 달인의 쫄깃한 쑥떡</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Nara+Park" class="map-btn" target="_blank">📍 나라 사슴공원 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Todaiji+Temple+Nara" class="map-btn" target="_blank">📍 동대사(도다이지) 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Nakatanidou+Nara" class="map-btn" target="_blank">📍 나카타니도 쑥떡 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-nara-deer">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🦌 신의 사자 나라 사슴들과 1초 3회 떡메치기 달인</div>
+                <div class="docent-desc-preview">1,300년을 인간과 함께 살아온 천연기념물 사슴들과 TV 챔피언 나카타니도 쑥떡의 비밀입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-nara-deer')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-nara-deer')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        나라 사슴공원에는 1,300마리가 넘는 사슴들이 울타리 없이 자유롭게 공원을 뛰어놀고 있습니다. 서기 768년, 나라의 수호 신사인 카스가타이샤를 창건할 때 신이 흰 사슴을 타고 내려왔다는 전설 덕분에, 사슴은 신의 거룩한 사자로 여겨져 국가 천연기념물로 극진한 보호를 받고 있습니다. 사슴에게 쌀겨와 밀가루로 만든 '시카센베'를 건넬 때 손에 쥐고 살짝 고개를 숙이면 사슴도 따라 깍듯하게 고개를 숙여 인사하는 신기한 광경을 볼 수 있죠! 나라 상점가의 '나카타니도'는 일본 전국 떡메치기 챔피언에 빛나는 명소로, 1초에 무려 세 번씩 초고속으로 떡을 내리치는 역동적인 퍼포먼스와 함께 입안에서 사르르 녹는 따뜻한 쑥떡을 맛볼 수 있습니다.
+                    </div>
+                </div>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-todaiji">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🏯 세계 최대 목조건축물과 15미터 거대 대불의 전설</div>
+                <div class="docent-desc-preview">8세기 일본 불교문화의 정점, 250톤 청동 노사나불과 액운을 쫓는 기둥 통과 팁입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-todaiji')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-todaiji')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        동대사, 즉 도다이지는 서기 752년 쇼무 천황이 국가의 안녕과 평화를 기원하며 창건한 절입니다. 대불전은 현존하는 세계 최대 규모의 목조건축물로, 현재 건물은 에도 시대에 재건된 것으로 원래보다 3분의 2 크기로 줄어든 것임에도 여전히 압도적인 위용을 자랑합니다. 법당 안에는 높이 15미터, 무게 250톤에 달하는 거대한 청동 노사나대불이 인자한 미소로 중생을 굽어보고 있습니다. 대불 오른쪽 뒤편으로 가면 어른 몸 하나가 겨우 지나갈 만한 네모난 구멍이 뚫린 거대한 나무기둥이 있는데요, 이 구멍의 크기가 바로 대불의 콧구멍 크기와 똑같다고 합니다. 이 기둥 구멍을 무사히 통과하면 1년 동안 무병장수하고 액운을 피할 수 있다는 이야기가 전해집니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코스 2: 아리마 온천마을 & 다케나카 육우점 -->
+        <div class="timeline-card">
+            <div class="card-time">🕛 11:30 - 14:10 (2시간 40분)</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Arima+Onsen+Kobe" target="_blank">아리마 온천마을 & 다케나카 육우점 🗺️</a>
+                <span class="badge badge-primary">온천 마을 & 자유 중식</span>
+            </div>
+            <div class="card-desc">일본 대표 온천지 아리마 온천마을을 산책하고, 금탕/은탕 온천욕이나 족욕과 함께 명품 고베규 규동 점심을 즐깁니다.</div>
+            <ul class="detail-list">
+                <li>♨️ <b>아리마 온천</b>: 붉은 금탕과 투명한 은탕, 고즈넉한 온천 골목 산책 (*온천욕/족욕 시 개인 타월 준비 추천)</li>
+                <li>🍽️ <b>[점심 식사]</b> <a href="https://www.google.com/maps/search/?api=1&query=Takenaka+Meat+Shop+Arima+Onsen" target="_blank">다케나카 육우점 (竹中肉店)</a>: 육즙 가득한 고베규 규동 및 고로케 정식</li>
+                <li>🍘 <b>[명물 간식]</b> 아리마 전통 수제 <b>탄산센베</b>와 톡 쏘는 <b>탄산사이다</b></li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Arima+Onsen+Kobe" class="map-btn" target="_blank">📍 아리마 온천마을 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Takenaka+Meat+Shop+Arima+Onsen" class="map-btn" target="_blank">📍 다케나카 육우점 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-arima-onsen">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 1분 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">♨️ 1400년 역사의 천연 보약, 황금빛 금탕과 톡 쏘는 은탕</div>
+                <div class="docent-desc-preview">일본 3대 고온천이자 도요토미 히데요시가 사랑한 명탕, 그리고 탄산센베의 유래입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-arima-onsen')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-arima-onsen')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        아리마 온천은 일본에서 가장 오래된 온천 중 하나로, 서기 631년 조메이 천황이 요양을 다녀갔다는 기록이 《일본서기》에 남아있을 만큼 유서 깊은 곳입니다. 전국시대를 통일한 도요토미 히데요시도 전쟁의 피로와 부상을 치유하기 위해 아내 네네와 함께 이곳을 자주 찾았다고 하죠. 아리마 온천은 바닷물보다 염분 농도가 높은 진한 염천이자 철분이 산화되어 붉은 흙빛을 띠는 '금탕'과, 무색투명하며 혈액순환을 촉진하는 탄산라듐 온천인 '은탕'의 두 가지 원천천을 함께 즐길 수 있는 세계적으로도 희귀한 온천입니다. 마을 골목에서 파는 바삭한 탄산센베는 바로 이 천연 탄산 온천수를 반죽에 넣어 구워내어 특유의 깔끔하고 고소한 식감을 자랑합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코스 3: 고베 기타노 이진칸거리 -->
+        <div class="timeline-card">
+            <div class="card-time">🕝 14:40 - 15:40 (1시간)</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kitano+Ijinkan+Kobe" target="_blank">고베 기타노 이진칸거리 🗺️</a>
+                <span class="badge badge-primary">유럽 감성 거리</span>
+            </div>
+            <div class="card-desc">고베 속에 숨겨진 이국적인 거리! 유럽풍 서양 근대 건축물이 이어져 걷는 것만으로도 여행 분위기를 만끽하는 감성 거리입니다.</div>
+            <ul class="detail-list">
+                <li>유럽 감성 가득한 건물들과 예쁜 골목길 포토존 가득</li>
+                <li>등록문화재 목조건물 스타벅스 기타노이진칸점 등 사진 명소 산책</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kitano+Ijinkan+Kobe" class="map-btn" target="_blank">📍 기타노 이진칸거리 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-kitano-ijinkan">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🏡 메이지 개항기 외국인 상관들의 낭만적인 서양풍 저택 거리</div>
+                <div class="docent-desc-preview">바다가 보이는 언덕 위 이국적인 서양식 건축물과 문화재 스타벅스의 매력입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-kitano-ijinkan')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-kitano-ijinkan')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        1868년 고베항이 서양에 문호를 개방하면서 외국인 상인과 외교관들이 모여들기 시작했습니다. 하지만 당시 고베 시내 평지는 공간이 협소했기 때문에, 바다가 시원하게 내려다보이는 롯코산 기슭의 기타노 언덕에 고향의 향수를 담은 서양식 저택을 짓고 살기 시작했는데, 이것이 바로 '기타노 이진칸'입니다. 붉은 벽돌 지붕 꼭대기에 수탉 모양 풍향계가 돌아가는 '풍향계의 집'은 독일 무역상의 저택이었으며, 은은한 올리브 그린빛의 '연두색의 집'은 미국 총영사가 살던 곳입니다. 1907년에 지어진 2층 목조 서양식 건물을 그대로 보존해 영업 중인 스타벅스 고베 기타노이진칸점은 일본 최초의 등록유형문화재 스타벅스로, 앤티크한 방에서 커피 한 잔의 여유를 즐기기에 제격입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코스 4: 고베 하버랜드 & 메리켄파크 -->
+        <div class="timeline-card">
+            <div class="card-time">🕓 16:00 - 17:20 (1시간 20분)</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kobe+Harborland" target="_blank">고베 하버랜드 & 메리켄파크 🗺️</a>
+                <span class="badge badge-primary">바다 뷰 & 포트타워</span>
+            </div>
+            <div class="card-desc">고베 바다를 한눈에 즐기는 대표 항구 명소! 붉은 고베 포트타워와 메리켄파크, 하버랜드 모자이크 쇼핑몰을 산책합니다.</div>
+            <ul class="detail-list">
+                <li>🌃 <b>고베 하버랜드</b>: 바다와 도시가 어우러진 낭만적인 고베 감성 및 쇼핑몰 산책</li>
+                <li>🌊 <b>메리켄파크 & 포트타워</b>: 바닷바람 맞으며 고베 포트타워와 BE KOBE 조형물 앞 인생샷 촬영</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kobe+Harborland" class="map-btn" target="_blank">📍 고베 하버랜드 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Meriken+Park+Kobe" class="map-btn" target="_blank">📍 메리켄파크 지도</a>
+            </div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-kobe-harbor">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 1분 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🌊 일본 전통 북을 닮은 붉은 포트타워와 불굴의 메모리얼 파크</div>
+                <div class="docent-desc-preview">아름다운 바다 야경 뒤에 숨은 고베 시민들의 용기와 'BE KOBE'의 진정한 의미입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-kobe-harbor')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-kobe-harbor')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        고베 하버랜드와 메리켄파크는 바다와 도시가 완벽한 조화를 이루는 고베의 대표적인 항만 명소입니다. 가운데 우뚝 솟은 붉은색 '고베 포트타워'는 일본 전통 악기인 장구(츠즈미)를 본떠 만든 세계 최초의 파이프 트러스 구조 타워로, 우아한 곡선미 덕분에 '철탑의 미녀'라는 별명을 가지고 있습니다. 공원 한편에는 1995년 1월 발생했던 규모 7.3의 한신·아와지 대지진 당시 무너져 내린 안벽과 기울어진 가로등을 그대로 보존해 둔 '메리켄파크 지진 메모리얼 파크'가 있습니다. 비극을 잊지 않고 도시를 다시 일으켜 세운 고베 시민들의 강인한 회복력을 기리는 공간이죠. 바로 옆 잔디밭의 'BE KOBE' 대형 조형물은 바로 이 재건의 자부심을 상징하며, 푸른 바다를 배경으로 사진을 남기기에 최고의 장소입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하차 및 호텔 재정비 -->
+        <div class="timeline-card tour">
+            <div class="card-time">🕕 18:00 - 18:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 앞 하차 & 숙소 재정비 🗺️</a>
+                <span class="badge badge-secondary">하차 & 휴식</span>
+            </div>
+            <div class="card-desc">미팅 장소와 동일한 츠루통탄 소에몬초점 앞에서 하차하여, 호텔로 이동해 가볍게 짐을 두고 19:30 스키야키 만찬을 준비합니다.</div>
+            <ul class="detail-list">
+                <li>소에몬초 츠루통탄 앞 하차 후 도보 5~10분 거리 KOKO 호텔 복귀</li>
+                <li>객실에 기념품과 짐을 정리하고 가벼운 복장으로 스키야키 예약 장소로 이동</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" class="map-btn" target="_blank">📍 하차지 지도</a>
+            </div>
+        </div>
+
+        <!-- 저녁 스키야키 만찬 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕢 19:30 - 21:00 ⭐ [사전 예약]</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">정통 특선 스키야키 코스 만찬 🗺️</a>
+                <span class="badge badge-accent">사전 예약 만찬</span>
+            </div>
+            <div class="card-desc">19:30 사전 예약 완료! 투어 후 부드럽고 풍미 가득한 특상 소고기 스키야키 코스로 든든한 가족 저녁 만찬을 즐깁니다.</div>
+            <ul class="detail-list">
+                <li>[사전 예약 19:30] <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" target="_blank">스키야키 호쿠토</a></li>
+                <li>마블링 좋은 고급 소고기를 볶아 특제 와리시타 소스를 붓고 신선한 달걀물에 찍어 먹는 정통 스키야키</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="map-btn" target="_blank">📍 스키야키 호쿠토 지도</a>
+            </div>
+        </div>
+
+        <!-- 밤 선술집 2차 및 편의점 -->
+        <div class="timeline-card">
+            <div class="card-time">🕘 21:00 -</div>
+            <div class="card-title">
+                난바·도톤보리 선술집(사케/하이볼) & 편의점 🗺️
+                <span class="badge badge-primary">야식 & 휴식</span>
+            </div>
+            <div class="card-desc">난바·도톤보리 인근 골목 선술집에서 가볍게 2차를 하고, 편의점에서 야식과 붓기 해소 음료를 구매합니다.</div>
+            <ul class="detail-list">
+                <li>도톤보리 인근 분위기 좋은 선술집에서 시원한 하이볼 또는 사케 2차</li>
+                <li>편의점에 들러 피로 회복 조합템(무쿠미 음료, 에너지 젤리) 및 야식 구매 후 호텔 복귀</li>
+            </ul>
         </div>
     </div>
 
     <!-- DAY 3 TIMELINE -->
     <div id="day3" class="timeline">
-        <!-- 아침 우동/라멘 및 그릇 쇼핑 -->
-        <div class="timeline-card">
-            <div class="card-time">        🕘 09:30 - 12:00</div>
+        <!-- 아침 나가호리바시 장어덮밥 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕘 09:00 - 10:30 ⭐ [사전 예약]</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">체크아웃 & 아침식사 & 그릇쇼핑 🗺️</a>
-                <span class="badge badge-primary">쇼핑 & 식사</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Nagahoribashi+Unagi+Osaka" target="_blank">나가호리바시 장어덮밥 (히츠마부시) 🗺️</a>
+                <span class="badge badge-accent">사전 예약 조식</span>
             </div>
-            <div class="card-desc">체크아웃 후 짐을 맡기고 맛있는 아침을 먹은 뒤 그릇 상점을 구경합니다.</div>
+            <div class="card-desc">체크아웃 후 짐을 맡기고 사전 예약된 나가호리바시 장어덮밥 명가에서 든든하게 여행 마지막 날을 시작합니다.</div>
             <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">츠루통탄 소에몬쵸점</a>(우동) 또는 <a href="https://www.google.com/maps/search/?api=1&query=Ippudo+Namba+Osaka" target="_blank">잇푸도 난바점</a>(라멘)</li>
-                <li><b>도구야스지 그릇거리</b>: 예쁜 일본 그릇, 접시, 맥주컵, 사케 술잔 쇼핑</li>
-                <li><b>[간식/타코야끼]</b> <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" target="_blank">타코야키 도라쿠 와나카 센니치마에 본점 (구글 4.2)</a>: 도구야스지 입구 위치. 겉바속촉의 정석이자 현지인 1위 타코야끼 맛집</li>
+                <li>호텔 체크아웃 후 프런트 또는 난바역에 캐리어 보관 위탁</li>
+                <li>[사전 예약 조식] <a href="https://www.google.com/maps/search/?api=1&query=Nagahoribashi+Unagi+Osaka" target="_blank">나가호리바시 장어덮밥 전문점</a></li>
+                <li>숯불 향이 그윽하게 밴 두툼한 장어구이 히츠마부시로 보양 식사</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" class="map-btn" target="_blank">📍 그릇거리 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Nagahoribashi+Unagi+Osaka" class="map-btn" target="_blank">📍 나가호리바시 장어덮밥 지도</a>
+            </div>
+        </div>
+
+        <!-- 도구야스지 그릇 쇼핑 및 덴덴타운 가챠/오락실 -->
+        <div class="timeline-card">
+            <div class="card-time">🕙 10:30 - 12:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">도구야스지 그릇거리 & 덴덴타운·난바 가챠 🗺️</a>
+                <span class="badge badge-primary">쇼핑 & 엔터</span>
+            </div>
+            <div class="card-desc">일본 감성 식기를 쇼핑하고, 덴덴타운과 난바의 대형 가챠 샵 및 오락실을 둘러봅니다.</div>
+            <ul class="detail-list">
+                <li>🛍️ <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" target="_blank">센니치마에 도구야스지 상점가(그릇거리)</a>: 도자기 그릇, 독구리 술병, 수저받침 등 예쁜 주방용품 쇼핑</li>
+                <li>🎮 <a href="https://www.google.com/maps/search/?api=1&query=Taito+Station+Namba+Osaka" target="_blank">타이토 스테이션 난바</a> 및 덴덴타운 오락실/인형뽑기 구경</li>
+                <li>🧸 <a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks" target="_blank">가샤폰 반다이 오피셜 숍 (난바 파크스 5층)</a>: 수백 대의 캡슐토이 기계 체험</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sennichimae+Doguyasuji+Shopping+Street+Osaka" class="map-btn" target="_blank">📍 도구야스지 그릇거리 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gashapon+Bandai+Official+Shop+Namba+Parks" class="map-btn" target="_blank">📍 반다이 가챠숍(난바파크스) 지도</a>
+            </div>
+        </div>
+
+        <!-- 점심 쿠로몬시장 & 사시스 초밥 / 와나카 타코야끼 -->
+        <div class="timeline-card">
+            <div class="card-time">🕧 12:30 - 14:30</div>
+            <div class="card-title">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market+Osaka" target="_blank">쿠로몬시장 & 스시사카바 사시스 & 와나카 🗺️</a>
+                <span class="badge badge-primary">시장 & 미식</span>
+            </div>
+            <div class="card-desc">활기 넘치는 쿠로몬시장의 싱싱한 해산물과 줄 서서 먹는 가성비 초밥집 사시스, 겉바속촉 와나카를 맛봅니다.</div>
+            <ul class="detail-list">
+                <li>🐟 <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market+Osaka" target="_blank">쿠로몬시장</a>: 두툼한 참치 대뱃살회, 즉석 가리비 버터구이 길거리 시식</li>
+                <li>🍣 <a href="https://www.google.com/maps/search/?api=1&query=Sushi+Sakaba+Sashisu+Namba+Osaka" target="_blank">스시사카바 사시스 난바점</a>: 흘러넘치는 참치김밥(토로텟카마키)과 가성비 최고의 초밥</li>
+                <li>🐙 <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" target="_blank">타코야키 도라쿠 와나카 센니치마에 본점 (구글 4.2)</a>: 겉바속촉 현지인 1위 타코야키</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Ichiba+Market+Osaka" class="map-btn" target="_blank">📍 쿠로몬시장 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sushi+Sakaba+Sashisu+Namba+Osaka" class="map-btn" target="_blank">📍 스시사카바 사시스 지도</a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Takoyaki+Doraku+Wanaka+Sennichimae+Osaka" class="map-btn" target="_blank">📍 와나카 타코야끼 지도</a>
             </div>
-            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
-                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 3] <a href="https://www.google.com/maps/search/?api=1&query=Marufuku+Coffee+Sennichimae+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">마루후쿠 커피점 센니치마에 본점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">90년 역사 킷사텐. 진한 드립 커피와 빈티지 핫케이크.</div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-kuromon-market">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">🐟 200년 동안 오사카인의 입맛을 책임진 '오사카의 부엌'</div>
+                <div class="docent-desc-preview">엔묘지의 검은 문에서 유래한 쿠로몬의 역사와 즉석 해산물 미식 팁입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-kuromon-market')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-kuromon-market')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        쿠로몬 시장은 약 580미터 길이의 아케이드 골목에 150여 개의 점포가 늘어선 오사카의 대표적인 전통 수산시장입니다. 에도 시대 후기인 1822년경, 근처에 있던 원명사(엔묘지)라는 사찰의 산문이 칠흑처럼 검은색이어서 '검은 문의 시장', 즉 쿠로몬 시장이라는 이름이 붙여졌습니다. 과거에는 오사카 전역의 특급 호텔과 고급 일식당 셰프들이 매일 새벽 최고급 식자재를 구하기 위해 찾던 전문 프로 시장이었죠. 오늘날에는 신선한 참치 대뱃살 사시미, 손바닥만 한 대왕 가리비 버터구이, 육즙 가득한 고베규 꼬치 등을 눈앞에서 즉석으로 구워주는 활기 넘치는 길거리 미식 천국으로 사랑받고 있습니다.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 점심식사 및 가챠 & 디저트 -->
-        <div class="timeline-card">
-            <div class="card-time">🕛 12:00 - 15:30</div>
+        <!-- 모토커피 & 드럭스토어 최종 쇼핑 -->
+        <div class="timeline-card cafe">
+            <div class="card-time">🕝 14:30 - 16:30</div>
             <div class="card-title">
-                점심(장어/규카츠) & 가챠 & 디저트 🗺️
-                <span class="badge badge-primary">쇼핑 & 식사</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=MOTO+COFFEE+Osaka" target="_blank">모토커피 (MOTO COFFEE) & 면세 쇼핑 🗺️</a>
+                <span class="badge badge-accent">감성 카페 & 쇼핑</span>
             </div>
-            <div class="card-desc">출국 전 마지막 최고급 일식 점심과 초대형 가챠샵, 디저트 쇼핑</div>
+            <div class="card-desc">강변 뷰가 운치 있는 모토커피에서 드립 커피를 마시며 여유를 즐기고, 드럭스토어에서 최종 쇼핑 후 출국을 준비합니다.</div>
             <ul class="detail-list">
-                <li>[식사] <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" target="_blank">장어의 나카쇼</a> (히츠마부시 장어덮밥) 또는 <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba+Osaka" target="_blank">규카츠 모토무라</a></li>
-                <li><b>가샤폰 반다이 오피셜 숍 (난바 파크스 5층)</b> 대형 가챠샵 구경</li>
-                <li><b>[틈새 가챠]</b> KOKO 호텔 뒤편 <b>덴덴타운 가챠 샵</b> 거리 구경</li>
+                <li>☕ <a href="https://www.google.com/maps/search/?api=1&query=MOTO+COFFEE+Osaka" target="_blank">모토커피 (MOTO COFFEE)</a>: 강변 테라스에서 즐기는 핸드드립 커피와 티라미수/디저트</li>
+                <li>🛍️ 난바/도톤보리 드럭스토어(돈키호테, 마츠모토키요시 등)에서 면세 쇼핑 및 짐 정리</li>
             </ul>
             <div class="btn-group">
-                <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" class="map-btn" target="_blank">📍 장어의 나카쇼 지도</a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Gyukatsu+Motomura+Namba+Osaka" class="map-btn" target="_blank">📍 규카츠 모토무라 지도</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=MOTO+COFFEE+Osaka" class="map-btn" target="_blank">📍 모토커피 지도</a>
             </div>
-            <div class="timeline-card cafe" style="margin-top: 15px; border-left-width: 3px; padding: 12px; margin-bottom: 0;">
-                <div class="card-time" style="margin-bottom: 4px;">☕ [추천 카페 4/디저트] <a href="https://www.google.com/maps/search/?api=1&query=HARBS+Namba+Parks+Osaka" target="_blank" style="border-bottom: 1.5px dashed var(--accent);">하브스 난바파크스점 🗺️</a></div>
-                <div class="card-desc" style="font-size: 12.5px; margin-bottom: 0;">얇은 크레이프 속 제철 과일과 생크림이 일품인 크레이프 케이크.</div>
+            <!-- 도슨트 오디오 가이드 -->
+            <div class="docent-box" id="docent-kitahama-nakanoshima">
+                <div class="docent-header">
+                    <span class="docent-badge">🎧 50초 오디오 도슨트</span>
+                    <div class="docent-equalizer">
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                        <span class="eq-bar"></span>
+                    </div>
+                </div>
+                <div class="docent-title">☕ 오사카의 브루클린, 토사보리 강변의 레트로 서양식 건축과 카페</div>
+                <div class="docent-desc-preview">오사카 경제의 요람에서 문화와 강변 낭만이 흐르는 감성 명소로의 변신 이야기입니다.</div>
+                <div class="docent-controls">
+                    <button class="docent-btn docent-play-btn" onclick="toggleDocent('docent-kitahama-nakanoshima')">▶️ 가이드 듣기</button>
+                    <button class="docent-btn docent-stop-btn" onclick="stopDocent()">⏹️ 정지</button>
+                    <button class="docent-script-btn" onclick="toggleScript('docent-kitahama-nakanoshima')">📜 대본 보기</button>
+                </div>
+                <div class="docent-script">
+                    <div class="docent-script-text">
+                        기타하마는 에도 시대 쌀 거래소가 있던 곳으로, 근대 이후 오사카 증권거래소와 은행들이 밀집하며 일본 경제의 심장 역할을 했던 금융가입니다. 강 건너 나카노시마 섬을 따라 걷다 보면 1918년 네오 르네상스 양식으로 지어진 붉은 벽돌의 오사카시 중앙공회당과 고풍스러운 일본은행 구 오사카지점 등 100년 역사를 간직한 근대 서양식 석조건축물들이 늘어서 있어 마치 유럽이나 뉴욕 브루클린에 온 듯한 이국적인 정취를 풍깁니다. 토사보리 강변을 따라 테라스 자리를 갖춘 모토커피(MOTO COFFEE)와 같은 감성 카페에서 흐르는 강물과 고풍스러운 공회당을 바라보며 마시는 핸드드립 커피는 오사카 여행의 잊지 못할 낭만을 선사합니다.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 공항 출발 -->
+        <!-- 공항 출발 및 출국 -->
         <div class="timeline-card tour">
-            <div class="card-time">🕒 16:30 -</div>
+            <div class="card-time">🕟 16:30 -</div>
             <div class="card-title">
-                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">라피트 탑승 및 귀국 🗺️</a>
-                <span class="badge badge-secondary">이동</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" target="_blank">난바역 라피트 탑승 & 간사이공항 출국 수속 🗺️</a>
+                <span class="badge badge-secondary">공항 이동 & 귀국</span>
             </div>
-            <div class="card-desc">난바역에서 캐리어를 찾고 특급 라피트를 타고 공항으로 출발합니다. (19:45 서울행 비행기)</div>
+            <div class="card-desc">맡겨둔 캐리어를 찾고 특급 라피트로 간사이공항에 여유롭게 도착하여 탑승 수속을 마칩니다. (출발 2~3시간 전 도착)</div>
+            <ul class="detail-list">
+                <li>난바역에서 <b>난카이 특급 라피트</b> 탑승 (공항까지 35~40분 소요)</li>
+                <li>간사이공항 도착 후 티켓 발권, 수하물 위탁, 출국 심사 및 면세점 쇼핑 후 비행기 탑승</li>
+            </ul>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport" class="map-btn" target="_blank">📍 간사이공항 지도</a>
+            </div>
         </div>
     </div>
     <!-- Convenience Store Food Guide with Accordion -->
@@ -1099,6 +1737,18 @@
                 <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍣 신선한 정통 스시 & 해산물</h3>
                 <div class="food-grid" style="margin-bottom: 0;">
                     <div class="food-card">
+                        <div class="food-name">후구쿠지라 (복어/고래요리) ⭐ 1일차 예약</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=ふぐくじら+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">스시사카바 사시스 난바점 (토로텟카마키)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sushi+Sakaba+Sashisu+Namba+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">스시로 난바점 (인기 회전초밥)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Sushiro+Namba+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
                         <div class="food-name">타치스시 마구로 잇테츠 센니치마에</div>
                         <a href="https://www.google.com/maps/search/?api=1&query=Tachisushi+Maguro+Ittetsu+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
                     </div>
@@ -1129,6 +1779,10 @@
             <div class="theme-group" style="margin-bottom: 20px;">
                 <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍱 든든한 장어덮밥 (우나기)</h3>
                 <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">나가호리바시 장어덮밥 ⭐ 3일차 예약</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nagahoribashi+Unagi+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
                     <div class="food-card">
                         <div class="food-name">장어의 나카쇼 신사이바시점</div>
                         <a href="https://www.google.com/maps/search/?api=1&query=Unagi+no+Nakasho+Shinsaibashi+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
@@ -1184,8 +1838,12 @@
                 <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🥩 정통 스키야키 & 야끼니꾸</h3>
                 <div class="food-grid" style="margin-bottom: 0;">
                     <div class="food-card">
-                        <div class="food-name">스키야키 호쿠토 (난바역)</div>
+                        <div class="food-name">스키야키 호쿠토 ⭐ 2일차 예약</div>
                         <a href="https://www.google.com/maps/search/?api=1&query=Sukiyaki+Hokuto+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">다케나카 육우점 (아리마 온천 규동)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Takenaka+Meat+Shop+Arima+Onsen" class="food-link" target="_blank">구글 지도 ➔</a>
                     </div>
                     <div class="food-card">
                         <div class="food-name">니혼바시 츠루야 스키야키</div>
@@ -1218,6 +1876,18 @@
             <div class="theme-group" style="margin-bottom: 10px;">
                 <h3 style="font-size: 13.5px; font-weight: 800; margin-bottom: 10px; color: var(--secondary); display: flex; align-items: center; gap: 6px;">🍺 이자카야 & 야키토리 & 디저트 카페</h3>
                 <div class="food-grid" style="margin-bottom: 0;">
+                    <div class="food-card">
+                        <div class="food-name">로바타야키 미즈카케차야 (화로구이)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Robatayaki+Mizukakechaya+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">모토커피 MOTO COFFEE (강변 카페)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=MOTO+COFFEE+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
+                    <div class="food-card">
+                        <div class="food-name">나카타니도 (나라 쑥떡 명물)</div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nakatanidou+Nara" class="food-link" target="_blank">구글 지도 ➔</a>
+                    </div>
                     <div class="food-card">
                         <div class="food-name">숯불구이 유지로 (Sumiyaki Yujirou)</div>
                         <a href="https://www.google.com/maps/search/?api=1&query=Sumiyaki+Yujirou+Sennichimae+Osaka" class="food-link" target="_blank">구글 지도 ➔</a>
@@ -1293,6 +1963,22 @@
             🔗 링크 복사
         </button>
     </div>
+
+    <!-- Floating Docent Mini Player -->
+    <div id="floating-player" class="floating-player">
+        <div class="floating-info">
+            <span class="floating-icon">🎧</span>
+            <div class="floating-text">
+                <span id="floating-title" class="floating-title">오디오 도슨트 가이드</span>
+                <span class="floating-sub">생생한 현장 역사 & 팁 해설 중</span>
+            </div>
+        </div>
+        <div class="floating-btns">
+            <button id="floating-play-btn" class="floating-ctrl-btn" onclick="toggleFloatingPlay()">⏸️</button>
+            <button class="floating-ctrl-btn" onclick="stopDocent()">⏹️</button>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -1349,6 +2035,189 @@
             iconSpan.textContent = '▼';
         }
     }
+
+    /* ==========================================
+       Docent TTS Audio System (Web Speech API)
+       ========================================== */
+    let currentDocentId = null;
+    let currentUtterance = null;
+    let isDocentPaused = false;
+    const docentRate = 0.98; // natural narrative pace
+
+    function getKoreanVoice() {
+        if (!('speechSynthesis' in window)) return null;
+        const voices = window.speechSynthesis.getVoices();
+        // Priority: Google 한국어, Yuna, Heami, or any ko-KR
+        return voices.find(v => v.lang === 'ko-KR' && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Premium'))) ||
+               voices.find(v => v.lang === 'ko-KR') ||
+               voices.find(v => v.lang.startsWith('ko')) ||
+               null;
+    }
+
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = () => {
+            getKoreanVoice();
+        };
+    }
+
+    function toggleDocent(id) {
+        if (currentDocentId === id) {
+            if (isDocentPaused) {
+                resumeDocent();
+            } else {
+                pauseDocent();
+            }
+        } else {
+            playDocent(id);
+        }
+    }
+
+    function playDocent(id) {
+        if (!('speechSynthesis' in window)) {
+            alert('이 기기/브라우저는 음성 재생(Web Speech API)을 지원하지 않습니다. 텍스트 대본으로 읽어보세요!');
+            toggleScript(id);
+            return;
+        }
+
+        const box = document.getElementById(id);
+        if (!box) return;
+
+        // Cancel previous speech
+        window.speechSynthesis.cancel();
+        isDocentPaused = false;
+
+        const scriptEl = box.querySelector('.docent-script-text');
+        const text = scriptEl ? scriptEl.innerText.trim() : '';
+        const titleEl = box.querySelector('.docent-title');
+        const title = titleEl ? titleEl.innerText.trim() : '오디오 도슨트 가이드';
+
+        if (!text) return;
+
+        currentDocentId = id;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ko-KR';
+        utterance.rate = docentRate;
+        utterance.pitch = 1.0;
+
+        const voice = getKoreanVoice();
+        if (voice) utterance.voice = voice;
+
+        utterance.onstart = () => {
+            isDocentPaused = false;
+            updateDocentUI(id, 'playing', title);
+        };
+
+        utterance.onend = () => {
+            updateDocentUI(id, 'stopped');
+            currentDocentId = null;
+            isDocentPaused = false;
+        };
+
+        utterance.onerror = (e) => {
+            console.error('Docent TTS Error:', e);
+            updateDocentUI(id, 'stopped');
+            currentDocentId = null;
+            isDocentPaused = false;
+        };
+
+        currentUtterance = utterance;
+        updateDocentUI(id, 'playing', title);
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function pauseDocent() {
+        if ('speechSynthesis' in window && window.speechSynthesis.speaking) {
+            window.speechSynthesis.pause();
+            isDocentPaused = true;
+            if (currentDocentId) {
+                updateDocentUI(currentDocentId, 'paused');
+            }
+        }
+    }
+
+    function resumeDocent() {
+        if ('speechSynthesis' in window && isDocentPaused) {
+            window.speechSynthesis.resume();
+            isDocentPaused = false;
+            if (currentDocentId) {
+                const box = document.getElementById(currentDocentId);
+                const titleEl = box ? box.querySelector('.docent-title') : null;
+                const title = titleEl ? titleEl.innerText.trim() : '';
+                updateDocentUI(currentDocentId, 'playing', title);
+            }
+        }
+    }
+
+    function stopDocent() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        if (currentDocentId) {
+            updateDocentUI(currentDocentId, 'stopped');
+        }
+        currentDocentId = null;
+        isDocentPaused = false;
+    }
+
+    function toggleScript(id) {
+        const box = document.getElementById(id);
+        if (!box) return;
+        box.classList.toggle('show-script');
+        const btn = box.querySelector('.docent-script-btn');
+        if (btn) {
+            btn.textContent = box.classList.contains('show-script') ? '📜 대본 닫기' : '📜 대본 보기';
+        }
+    }
+
+    function updateDocentUI(id, status, title = '') {
+        // Reset all boxes
+        document.querySelectorAll('.docent-box').forEach(b => {
+            b.classList.remove('playing', 'paused');
+            const playBtn = b.querySelector('.docent-play-btn');
+            if (playBtn) playBtn.innerHTML = '▶️ 가이드 듣기';
+        });
+
+        const floating = document.getElementById('floating-player');
+        const floatingTitle = document.getElementById('floating-title');
+        const floatingPlayBtn = document.getElementById('floating-play-btn');
+
+        const activeBox = document.getElementById(id);
+
+        if (status === 'playing') {
+            if (activeBox) {
+                activeBox.classList.add('playing');
+                const playBtn = activeBox.querySelector('.docent-play-btn');
+                if (playBtn) playBtn.innerHTML = '⏸️ 일시정지';
+            }
+            if (floating) {
+                floating.classList.add('active');
+                if (floatingTitle && title) floatingTitle.textContent = title;
+                if (floatingPlayBtn) floatingPlayBtn.innerHTML = '⏸️';
+            }
+        } else if (status === 'paused') {
+            if (activeBox) {
+                activeBox.classList.add('paused');
+                const playBtn = activeBox.querySelector('.docent-play-btn');
+                if (playBtn) playBtn.innerHTML = '▶️ 계속듣기';
+            }
+            if (floatingPlayBtn) floatingPlayBtn.innerHTML = '▶️';
+        } else if (status === 'stopped') {
+            if (floating) {
+                floating.classList.remove('active');
+            }
+        }
+    }
+
+    function toggleFloatingPlay() {
+        if (!currentDocentId) return;
+        if (isDocentPaused) {
+            resumeDocent();
+        } else {
+            pauseDocent();
+        }
+    }
+
 </script>
 </body>
 </html>
